@@ -1,0 +1,34 @@
+<!-- game-library.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Include your CSS and JavaScript files -->
+    <link rel="stylesheet" href="styles/gamelib.css">
+    <script src="game-library.js"></script>
+</head>
+<body>
+    <header>
+        <h1>My Game Library</h1>
+    </header>
+    <main>
+        <section class="add-game">
+            <h2>Add a Game</h2>
+            <form id="addGameForm">
+                <input type="text" id="gameTitle" placeholder="Game Title" required>
+                <input type="text" id="gamePlatform" placeholder="Platform (e.g., PC, PS5)">
+                <input type="number" id="gameYear" placeholder="Release Year">
+                <button type="submit">Add</button>
+            </form>
+        </section>
+        <section class="game-list">
+            <h2>My Games</h2>
+            <ul id="gameList">
+                <!-- Game items will be added here dynamically -->
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 GamersNook! All Rights Reserved</p>
+    </footer>
+</body>
+</html>
