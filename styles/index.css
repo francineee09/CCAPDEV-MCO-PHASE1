@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Foldit:wght@300&family=Reem+Kufi+Fun:wght@700&family=Roboto:wght@100&display=swap');
+
+:root {
+    --header-font : 'Reem Kufi Fun', sans-serif;
+    --header-bg :#f5f0f6;
+    --body-bg : #0C0C0C;
+    --features : #e1cbd7;
+}
+
 /* Reset some default styles */
 body, h1, h2, p, ul, li, nav, a, button {
     margin: 0;
@@ -6,11 +15,10 @@ body, h1, h2, p, ul, li, nav, a, button {
     list-style: none;
 }
 
-/* Set background and text colors */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #1f1f1f; /* Dark background color */
-    color: #ffffff; /* White text color */
+    background-color: #1f1f1f; 
+    color: #ffffff; 
 }
 
 .container {
@@ -21,10 +29,13 @@ body {
 
 /* Header styles */
 header {
-    background-color: #121212; /* Dark gray header background */
-    color: #ffffff; /* White text color */
+    font-family: var(--header-font);
+    background-color: var(--header-bg);
     padding: 10px 0;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Add subtle shadow for a modern look */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    border-bottom: 1.5px solid rgba(76, 79, 84, 0.08);
+    position: sticky;
+    top: 0;
 }
 
 nav {
@@ -34,9 +45,14 @@ nav {
 }
 
 .logo h1 {
+    background: url('images/bg1.png');
+    background-size: cover;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -moz-background-clip:text;
+    background-clip:text; 
     font-size: 32px;
-    font-weight: bold; /* Add boldness for emphasis */
-    color: #fbbd2e; /* Highlight color for logo */
+    color: #99f3ff;
 }
 
 .user-actions a {
@@ -45,32 +61,39 @@ nav {
 
 /* Hero section styles */
 .hero {
-    background-image: url('hero-background.jpg'); /* Replace with your image */
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    padding: 100px 0;
-    color: #ffffff; /* White text color */
+  background-color: #121212;
+  background-image: url('images/bg2.png');
+  background-size: cover;
+  background-position: center;
+  font-family: var(--header-font);
+  text-align: center;
+  padding: 100px 0;
+  color: #ffffff;
 }
 
 .hero h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-    font-weight: bold; /* Add boldness for emphasis */
+    font-size: 35px;
+    color: #faf5f6;
+    text-shadow: 1px 1px #080206;
+    margin: 15px;
+    font-weight: bold;
 }
 
 .hero p {
-    font-size: 20px;
+    color:#55798b;
+    font-weight: lighter;
+    font-size: 15px;
     margin-bottom: 30px;
 }
 
 /* Features section styles */
 .features {
     padding: 60px 0;
-    background-color: #292929; /* Dark gray background for features section */
+    background-color: #000000;
 }
 
 .feature {
+    font-family: var(--header-font);
     text-align: center;
     margin-bottom: 30px;
 }
@@ -78,13 +101,13 @@ nav {
 .feature i {
     font-size: 40px;
     margin-bottom: 20px;
-    color: #fbbd2e; /* Highlight color for icons */
+    color: #fbbd2e; 
 }
 
 .feature h2 {
     font-size: 24px;
     margin-bottom: 10px;
-    font-weight: bold; /* Add boldness for emphasis */
+    font-weight: bold;
 }
 
 .feature p {
@@ -93,38 +116,53 @@ nav {
 
 /* Call to Action (CTA) button styles */
 .btn-primary {
-    background-color: #fbbd2e;
-    color: #ffffff; /* White text color */
-    padding: 12px 24px;
-    font-size: 18px;
+    background-color: #f18bf0;
+    background-image: linear-gradient(rgba(231, 36, 59, 0.714), rgb(250, 65, 216));
+    color: #ffffff;
+    font-family: var(--header-font);
+    padding: 10px 20px;
+    font-size: 15px;
     text-transform: uppercase;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    box-shadow: 2px 2px 4px rgb(32, 18, 18);
+}
+
+.btn-secondary {
+    font-family: var(--header-font);
+    text-decoration: none;
+    color: #27063d;
+}
+
+.btn-secondary:hover{
+    color: hsl(343, 87%, 67%);
 }
 
 .btn-primary:hover {
-    background-color: #ffcc00; /* Highlight color on hover */
+    background-color: #1a0014;
 }
 
-/* Latest content section styles (customize as needed) */
+/* Latest content section styles */
 .latest-content {
     padding: 60px 0;
 }
 
-/* Testimonials section styles (customize as needed) */
+/* Testimonials section styles */
 .testimonials {
     padding: 60px 0;
-    background-color: #121212; /* Dark gray background for testimonials section */
+    background-color: #121212;
 }
 
 /* Footer styles */
 footer {
-    background-color: #292929; /* Dark gray background for footer */
-    color: #ffffff; /* White text color */
+    background-image: url('images/bg1.png');
+    background-color: #292929;
+    color: #ffffff; 
     padding: 20px 0;
     text-align: center;
+    border-top: 1px solid #f5f0f6;
 }
 
 .footer-links {
@@ -138,7 +176,7 @@ footer {
 }
 
 .footer-links a {
-    color: #ffffff; /* White text color */
+    color: #ffffff;
     text-decoration: none;
     font-size: 14px;
 }
@@ -150,10 +188,10 @@ footer {
 .social-icons i {
     font-size: 24px;
     margin: 0 10px;
-    color: #fbbd2e; /* Highlight color for icons */
+    color: #fbbd2e;
 }
 
-/* Media queries for responsiveness (customize as needed) */
+/* Media queries for responsiveness */
 @media (max-width: 768px) {
     /* Add responsive styles here */
 }
