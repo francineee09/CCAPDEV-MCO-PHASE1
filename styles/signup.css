@@ -1,71 +1,58 @@
-/* Reset some default styles */
-body, h1, h2, p, ul, li, nav, a, button, input {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style: none;
-    border: none;
-}
-
-/* Set background and text colors */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #1f1f1f; /* Dark background color */
-    color: #ffffff; /* White text color */
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    background-color: var(--header-bg);
 }
 
 /* Header styles */
 header {
-    background-color: #121212; /* Dark gray header background */
-    color: #ffffff; /* White text color */
+    font-family: var(--header-font);
+    background-color: var(--header-bg);
     padding: 10px 0;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Add subtle shadow for a modern look */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    border-bottom: 1.5px solid rgba(76, 79, 84, 0.08);
+    position: sticky;
+    top: 0;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo a {
+.navbar-brand {
+    background: url('images/bg1.png');
+    background-size: cover;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -moz-background-clip:text;
+    background-clip:text; 
     font-size: 32px;
-    font-weight: bold; /* Add boldness for emphasis */
-    color: #fbbd2e; /* Highlight color for logo */
+    color: #99f3ff;
 }
 
 /* Form styles */
 .card {
-    background-color: #292929; /* Dark gray card background */
-    color: #ffffff; /* White text color */
+    background-color: #292929; 
+    color: #ffffff; 
     border-radius: 10px;
 }
 
 .card-header {
-    background-color: #121212; /* Dark gray card header background */
-    border-bottom: 2px solid #fbbd2e; /* Highlight color for card header */
+    background-color: #121212; 
+    border-bottom: 2px solid #e9e7e2;
+    background: url('images/bg2.png');
 }
 
 .card-body {
     padding: 30px;
+    background: url('images/bg2.png');
 }
 
 .form-group label {
+    font-family: var(--header-font);
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #fbbd2e; /* Highlight color for labels */
+    color: #adc6e0; 
 }
 
 .form-control {
-    background-color: #333; /* Dark form input background */
-    color: #ffffff; /* White text color */
+    background-color: #dfdcdc; 
+    color: #ffffff;
     border: 1px solid #555;
     border-radius: 5px;
     padding: 10px;
@@ -73,35 +60,45 @@ nav {
 }
 
 .form-control:focus {
-    border-color: #fbbd2e; /* Highlight color on focus */
+    border-color: #63b096;
 }
 
 .btn-primary {
-    background-color: #fbbd2e;
-    color: #ffffff; /* White text color */
-    padding: 12px 24px;
-    font-size: 18px;
+    background-color: #f18bf0;
+    background-image: linear-gradient(rgba(231, 36, 59, 0.714), rgb(250, 65, 216));
+    color: #ffffff;
+    font-family: var(--header-font);
+    padding: 10px 20px;
+    font-size: 15px;
     text-transform: uppercase;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    box-shadow: 2px 2px 4px rgb(32, 18, 18);
 }
 
 .btn-primary:hover {
-    background-color: #ffcc00; /* Highlight color on hover */
+    background-color: #1a0014;
 }
 
 /* Link styles */
+.text-center {
+    font-family: var(--header-font);
+}
+
 .text-center a {
-    color: #fbbd2e; /* Highlight color for links */
+    font-family: var(--header-font);
+    text-decoration: none;
+    color: #d2b8e4;
 }
 
 .text-center a:hover {
     text-decoration: underline;
+    color: hsl(343, 87%, 67%);
 }
 
-/* Media queries for responsiveness (customize as needed) */
+/* Media queries for responsiveness */
 @media (max-width: 768px) {
     /* Add responsive styles here */
 }

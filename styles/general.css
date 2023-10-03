@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Foldit:wght@300&family=Reem+Kufi+Fun:wght@700&family=Roboto:wght@100&display=swap');
+
+:root {
+    --header-font : 'Reem Kufi Fun', sans-serif;
+    --header-bg :#f5f0f6;
+    --body-bg : #0C0C0C;
+    --features : #e1cbd7;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1f1f1f;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body, h1, h2, p, ul, li, nav, a, button, input {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    border: none;
+}

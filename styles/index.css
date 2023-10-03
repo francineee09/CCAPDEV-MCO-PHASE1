@@ -1,32 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Foldit:wght@300&family=Reem+Kufi+Fun:wght@700&family=Roboto:wght@100&display=swap');
-
-:root {
-    --header-font : 'Reem Kufi Fun', sans-serif;
-    --header-bg :#f5f0f6;
-    --body-bg : #0C0C0C;
-    --features : #e1cbd7;
-}
-
-/* Reset some default styles */
-body, h1, h2, p, ul, li, nav, a, button {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style: none;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #1f1f1f; 
-    color: #ffffff; 
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
 /* Header styles */
 header {
     font-family: var(--header-font);
@@ -36,12 +7,6 @@ header {
     border-bottom: 1.5px solid rgba(76, 79, 84, 0.08);
     position: sticky;
     top: 0;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .logo h1 {
@@ -130,6 +95,10 @@ nav {
     box-shadow: 2px 2px 4px rgb(32, 18, 18);
 }
 
+.btn-primary:hover {
+    background-color: #1a0014;
+}
+
 .btn-secondary {
     font-family: var(--header-font);
     text-decoration: none;
@@ -138,10 +107,6 @@ nav {
 
 .btn-secondary:hover{
     color: hsl(343, 87%, 67%);
-}
-
-.btn-primary:hover {
-    background-color: #1a0014;
 }
 
 /* Latest content section styles */
