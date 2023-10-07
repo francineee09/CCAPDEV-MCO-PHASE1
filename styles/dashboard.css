@@ -1,10 +1,17 @@
+body{
+    background-color: #02042f;
+    /*background-image: url('images/bg2.png');
+    background-size: cover;*/
+}
+
+
 /* Header styles */
 header {
     font-family: var(--header-font);
-    background-color: var(--header-bg);
+    background-color: rgba(255, 255, 255, 0.271);
     padding: 10px 0;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    border-bottom: 1.5px solid rgba(76, 79, 84, 0.08);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.432);
+    border-bottom: 1.5px solid rgba(76, 79, 84, 0.593);
 }
 
 .navbar-brand {
@@ -26,6 +33,12 @@ header {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for card */
 }
 
+.card:hover{
+    color: #ffffff;
+    background-image: url('images/bgH.jpg');
+    background-size: cover;
+}
+
 .card-header {
     background-color: #fbbd2e; /* Highlight color for card header */
     border-bottom: 2px solid #333; /* Dark border for card header */
@@ -40,11 +53,11 @@ header {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #333; /* Dark text color */
+    color:  #dddddd; /* Dark text color */
 }
 
 .form-control {
-    background-color: #f2f2f2; /* Light gray form input background */
+    background-color: #f2f2f289; /* Light gray form input background */
     color: #333; /* Dark text color */
     border: 1px solid #ccc; /* Light gray border */
     border-radius: 5px;
@@ -52,30 +65,39 @@ header {
     font-size: 16px;
 }
 
+.form-control:hover{
+    color: #000000;
+}
+
 .form-control:focus {
-    border-color: #fbbd2e; /* Highlight color on focus */
+    border-color: #e02efb; /* Highlight color on focus */
     box-shadow: none; /* Remove default focus shadow */
 }
 
 .btn-primary {
-    background-color: #fbbd2e;
-    color: #ffffff; /* White text color */
-    padding: 12px 24px;
+    background-color: #ff8de4;
+    background-image: url('images/tao.png');
+    background-size: cover;
+    color: #f9dede; /* White text color */
+    text-shadow: 1px 1px #00ffea;
+    font-weight: bolder;
+    padding: 9px 20px;
     font-size: 18px;
     text-transform: uppercase;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    border: solid;
 }
 
 .btn-primary:hover {
-    background-color: #ffcc00; /* Highlight color on hover */
+    background-color: #00ffea; /* Highlight color on hover */
 }
 
 /* Link styles */
 .text-center a {
-    color: #fbbd2e; /* Highlight color for links */
+    color: #ffffff; /* Highlight color for links */
 }
 
 .text-center a:hover {

@@ -2,7 +2,7 @@
 
 :root {
     --header-font : 'Reem Kufi Fun', sans-serif;
-    --header-bg :#f5f0f6;
+    /*--header-bg :#f5f0f6;*/
     --body-bg : #0C0C0C;
     --features : #e1cbd7;
 }
@@ -16,7 +16,7 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 7px;
 }
 
 nav {

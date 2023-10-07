@@ -1,12 +1,14 @@
 body {
     background-color: var(--header-bg);
+    background-image: url('images/bgA.jpg');
+    background-size:100%;
 }
 
 /* Header styles */
 header{
     font-family: var(--header-font);
-    background-color: var(--header-bg);
-    padding: 10px 0;
+    background-color: rgba(184, 175, 175, 0.426);
+    /*--padding: 10px 0;*/
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     border-bottom: 1.5px solid rgba(76, 79, 84, 0.08);
 }
@@ -20,24 +22,27 @@ header{
     background-clip:text; 
     font-size: 32px;
     color: #99f3ff;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Form styles */
 .card {
     background-color: #292929; 
     color: #ffffff; 
-    border-radius: 10px;
+    border-radius: 3px;
+    border:2px solid rgb(11, 234, 234);
 }
 
 .card-header {
     background-color: #121212; 
     border-bottom: 2px solid #e9e7e2;
-    background: url('images/bg3.png');
+    background: url('images/bg2.png');
 }
 
 .card-body {
     padding: 30px;
-    background: url('images/bg3.png');
+    background: url('images/bg2.png');
 }
 
 .form-group label {
@@ -49,7 +54,7 @@ header{
 }
 
 .form-control {
-    background-color: #dfdcdc; 
+    background-color: #dfdcdc5f; 
     color: #ffffff;
     border: 1px solid #555;
     border-radius: 5px;
@@ -58,12 +63,12 @@ header{
 }
 
 .form-control:focus {
-    border-color: #63b096;
+    border-color: #00fff2;
 }
 
 .btn-primary {
     background-color: #f18bf0;
-    background-image: linear-gradient(rgba(231, 36, 59, 0.714), rgb(250, 65, 216));
+    background-image: linear-gradient(rgba(69, 231, 36, 0.702), rgb(35, 87, 10));
     color: #ffffff;
     font-family: var(--header-font);
     padding: 10px 20px;
@@ -88,7 +93,7 @@ header{
 .text-center a {
     font-family: var(--header-font);
     text-decoration: none;
-    color: #d2b8e4;
+    color: #07f4f0;
 }
 
 .text-center a:hover {
@@ -100,3 +105,11 @@ header{
 @media (max-width: 768px) {
     /* Add responsive styles here */
 }
+
+.logo{
+    display: block;
+    justify-content: center;
+    width: 100%;
+}
+
+
