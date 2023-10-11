@@ -29,7 +29,7 @@ header {
   justify-content: center;
   font-family: var(--header-font);
   font-size: 30px;
-  background-color: #171D34;
+  background-color: #dbe0f4;
   padding: 3%;
 }
 
@@ -44,7 +44,7 @@ header {
   height: 600px;
   background-color: #f5f0f6;
   border-radius: 3px;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .profile-container {
@@ -245,3 +245,16 @@ footer {
   color: #490946;
   font-weight: bold;
 }
+
+.comment-box{
+  background: #f0f0f0;
+}
+.comment-box .container{}
+.date{font-size: 11px}
+.comment-text{font-size: 12px}
+.fs-12{font-size: 12px}
+.shadow-none{box-shadow: none}
+.name{color: #007bff}
+.cursor:hover{color: blue}
+.cursor{cursor: pointer}
+.textarea{resize: none}
