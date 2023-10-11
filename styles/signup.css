@@ -105,12 +105,11 @@ header {
     color: hsl(343, 87%, 67%);
 }
 
-/* Media queries for responsiveness */
-@media (max-width: 768px) {
-    /* Add responsive styles here */
+.row {
+    padding-bottom: 60px;
 }
 
-.row{
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
 
-    padding-bottom: 60px;
 }

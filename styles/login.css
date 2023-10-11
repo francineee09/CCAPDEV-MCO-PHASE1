@@ -103,13 +103,11 @@ header{
 
 /* Media queries for responsiveness (customize as needed) */
 @media (max-width: 768px) {
-    /* Add responsive styles here */
+
 }
 
-.logo{
+.logo {
     display: block;
     justify-content: center;
     width: 100%;
 }
-
-
