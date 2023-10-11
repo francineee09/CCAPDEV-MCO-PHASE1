@@ -235,17 +235,17 @@ footer {
   text-align: justify;
 }
 
-.more {
+#more {
   display: none;
 }
 
-.readMore { 
-  color: #490946;
-  font-weight: bold;
+#myBtn:hover{
+  cursor: pointer;
 }
 
-.readMore:hover{
-  cursor: pointer;
+#myBtn{
+  color: #490946;
+  font-weight: bold;
 }
 
 /* Comment styles */

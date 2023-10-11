@@ -324,9 +324,9 @@ displayLibrary();
 
 // For read more
 function myFunction() {
-    var dots = document.getElementsByClassName("dots");
-    var moreText = document.getElementsByClassName("more");
-    var btnText = document.getElementsByClassName("readMore");
+    var dots = document.getElementById("dots");
+    var moreText = document.getElementById("more");
+    var btnText = document.getElementById("myBtn");
   
     if (dots.style.display === "none") {
       dots.style.display = "inline";
