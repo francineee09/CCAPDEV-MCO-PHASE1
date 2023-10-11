@@ -322,11 +322,11 @@ document.getElementById('addGameForm').addEventListener('submit', (event) => {
 // Initial display of the game library
 displayLibrary();
 
-// For read more
-function myFunction() {
-    var dots = document.getElementById("dots");
-    var moreText = document.getElementById("more");
-    var btnText = document.getElementById("myBtn");
+//for read more
+function myFunction(game) {
+    let dots = document.querySelector(`.post-info-container[data-game="${game}"] .dots`);
+    let moreText = document.querySelector(`.post-info-container[data-game="${game}"] .more`);
+    let btnText = document.querySelector(`.post-info-container[data-game="${game}"] .myBtn`);
   
     if (dots.style.display === "none") {
       dots.style.display = "inline";

@@ -58,7 +58,7 @@
         </nav>
     </header>
 
-    <section class="latest-content">
+    <div class="latest-content">
         <div class="reviews-title"> Latest Reviews and Discussions </div>
 
         <div class="user-container">
@@ -70,31 +70,32 @@
                 </div>
             </div>
 
-            <div class="post-container">
+            <div class="post-container">   
                 <div class="post-title">
                     <span class="title"> God of War: Ragnarok </span> 
                 </div>
-                
+                    
                 <div class="post-pic">
                     <img class="game-pic" src="styles/images/post1.jpg" alt="Post 1 Image">
                 </div>
             </div>
 
-            <div class="post-info-container">
-                <div class="post-info">
+            <div class="post-info-container" data-game="gow">
+                <div class="post-content">
                     <p> 
-                        I hope that this will encourage everyone to sit back and relax.
                         This is an amazing game! I just finished playing it, and I highly recommend it to everyone.
-                        <span id="dots">...</span>
-                        <span id="more">
+                        This is an amazing game! I just finished playing it, and I highly recommend it to everyone.
+                        <span class="dots">...</span>
+                        <span class="more">
                             I hope that this will encourage everyone to sit back and relax.
                             This is an amazing game! I just finished playing it, and I highly recommend it to everyone.
                             I hope that this will encourage everyone to sit back and relax.
                             This is an amazing game! I just finished playing it, and I highly recommend it to everyone.
+                            I hope that this will encourage everyone to sit back and relax. 
                             I hope that this will encourage everyone to sit back and relax.
                         </span>
-                    </p></span></p>
-                    <a onclick="myFunction()" id="myBtn"> Read more </a>
+                    </p>
+                    <a onclick="myFunction('gow')" class="myBtn"> Read more </a>
                 </div>
             </div>
 
@@ -178,12 +179,12 @@
                 </div>
             </div>
 
-            <div class="post-info-container">
-                <div class="post-info">
+            <div class="post-info-container" data-game="cod">
+                <div class="post-content">
                     <p>
                         Ladies and gentlemen, "Call of Duty" is the courtroom drama of the gaming world,
                         delivering graphics as sharp as a lawyer's wit, sound that hits like an unexpected
-                        <span class="dots"> ... </span>
+                        <span class="dots">...</span>
                         <span class="more">
                             objection, and action faster than a plea deal negotiation. But beware the occasional
                             spawn system mishaps and camping enthusiasts. In the end, it's a rollercoaster of
@@ -192,7 +193,7 @@
                             courtroom. Case closed!
                         </span>
                     </p>
-                    <a onclick="myFunction()" class="readMore">Read more</a>
+                    <a onclick="myFunction('cod')" class="myBtn"> Read more </a>
                 </div>
             </div>
 
@@ -276,8 +277,8 @@
                 </div>
             </div>
 
-            <div class="post-info-container">
-                <div class="post-info">
+            <div class="post-info-container" data-game="uncharted">
+                <div class="post-content">
                     <p>
                         Ladies and gentlemen, if I, Kirk Lazarus, were to review a game,
                         it'd be like comparing method acting to a thumb war with a kitten.
@@ -292,7 +293,7 @@
                             with your method acting.
                         </span>
                     </p>
-                    <a onclick="myFunction()" class="readMore">Read more</a>
+                    <a onclick="myFunction('uncharted')" class="myBtn">Read more</a>
                 </div>
             </div>
 
@@ -376,8 +377,8 @@
                 </div>
             </div>
 
-            <div class="post-info-container">
-                <div class="post-info">
+            <div class="post-info-container" data-game="rv">
+                <div class="post-content">
                     <p>
                         Playing Resident Evil felt like a delightful family reunion,
                         where grotesque monstrosities and chilling corridors welcomed me with open arms.
@@ -390,7 +391,7 @@
                             perfect addition to our charmingly macabre household.
                         </span>
                     </p>
-                    <a onclick="myFunction()" class="readMore">Read more</a>
+                    <a onclick="myFunction('rv')" class="myBtn">Read more</a>
                 </div>
             </div>
 
@@ -466,7 +467,7 @@
 
             <div class="post-container">
                 <div class="post-title">
-                    <span class="title"> CALL OF DUTY!!! </span> 
+                    <span class="title"> Hogwarts Legacy! </span> 
                 </div>
                 
                 <div class="post-pic">
@@ -474,8 +475,8 @@
                 </div>
             </div>
 
-            <div class="post-info-container">
-                <div class="post-info">
+            <div class="post-info-container" data-game="hl">
+                <div class="post-content">
                     <p>
                         I must say, playing Hogwarts Legacy was like revisiting my alma mater,
                         Hogwarts, in a different era, and it felt magical in every sense.
@@ -489,7 +490,7 @@
                             it's a spellbinding journey worth embarking upon. Accio fun!
                         </span>
                     </p>
-                    <a onclick="myFunction()" class="readMore">Read more</a>
+                    <a onclick="myFunction('hl')" class="myBtn">Read more</a>
                 </div>
             </div>
 
@@ -553,21 +554,19 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <footer>
-        <div class="container">
-            <ul class="footer-links">
-                <li><a href="#"> Privacy Policy </a></li>
-                <li><a href="#"> Terms of Service </a></li>
-                <li><a href="#"> Contact Us </a></li>
-                <li><a href="#"> About Us </a></li>
-            </ul>
-            <div class="social-icons">
-                <!-- Add social media icons here -->
-            </div>
+    <div class="footer-container">
+        <ul class="footer-links">
+            <li><a href="#"> Privacy Policy </a></li>
+            <li><a href="#"> Terms of Service </a></li>
+            <li><a href="#"> Contact Us </a></li>
+            <li><a href="#"> About Us </a></li>
+        </ul>
+        <div class="social-icons">
+        
         </div>
-    </footer>
+    </div>
 
     <script src="/javascript/script.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
