@@ -1,10 +1,14 @@
+body{
+    background-color: #02042f;
+}
+
 /* Header styles */
 header {
     font-family: var(--header-font);
-    background-color: var(--header-bg);
+    background-color: rgba(255, 255, 255, 0.271);
     padding: 10px 0;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    border-bottom: 1.5px solid rgba(76, 79, 84, 0.08);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.432);
+    border-bottom: 1.5px solid rgba(76, 79, 84, 0.593);
 }
 
 .navbar-brand {
@@ -34,6 +38,7 @@ header {
     font-size: 24px;
     font-weight: bold;
     margin-top: 15px;
+    color: black;
 }
 
 .card-text {
@@ -58,12 +63,43 @@ header {
 }
 
 /* Footer styles */
-footer {
-    background-color: #333; 
-    color: #ffffff;
-    padding: 10px 0;
+.footer-container {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-image: url('images/bg2.png');
+    background-color: #292929;
+    color: #ffffff; 
+    padding: 20px 0;
     text-align: center;
+    border-top: 1px solid #f5f0f6;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.footer-links li {
+    margin: 0 20px;
+}
+
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
     font-size: 14px;
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons i {
+    font-size: 24px;
+    margin: 0 10px;
+    color: #e3a6de;
 }
 
 /* Media queries for responsiveness */

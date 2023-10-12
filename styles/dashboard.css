@@ -34,6 +34,7 @@ header {
     color: #ffffff;
     background-image: url('images/bgH.jpg');
     background-size: cover;
+    transition-duration: 0.5s;
 }
 
 .card-header {
@@ -74,6 +75,7 @@ header {
 .btn-primary {
     background-color: #ff8de4;
     background-image: url('images/tao.png');
+    transition-duration: 0.5s;
     background-size: cover;
     color: #f9dede;
     text-shadow: 1px 1px #00ffea;
@@ -255,4 +257,44 @@ header {
 
 .chat-entry.active {
     background-color: #bf5aa2ad; 
+}
+
+/* Footer styles */
+.footer-container {
+    background-image: url('images/bg2.png');
+    background-color: #292929;
+    color: #ffffff; 
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid #f5f0f6;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.footer-links li {
+    margin: 0 20px;
+}
+
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons i {
+    font-size: 24px;
+    margin: 0 10px;
+    color: #e3a6de;
+}
+
+.social-icons i:hover {
+    color: #c04db8;
 }

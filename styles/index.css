@@ -59,6 +59,38 @@ color: #ffffff;
   padding: 10px;
 }
 
+.hero .container{
+  background-image: url("images/bgG.jpg");
+  background-size: cover;
+  height: 400px;
+  width: 650px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.519);
+}
+
+.square {
+  height: 50px;
+  width: 100px;
+  background-color: #555;
+  position: absolute;
+  margin: 2%;
+  justify-content: center;
+  animation: updown 2s linear infinite;
+  background-image: url('images/bgB.jpg');
+  background-size: cover;
+  box-shadow: 5px 5px #00000028;
+  border-radius: 4px;
+}
+
+@keyframes updown {
+  0%, 100% {
+      bottom: 0;
+  }
+  50% {
+      bottom: 10px;
+  }
+}
+
 /* Features section styles */
 .features {
   padding: 60px 0;
@@ -123,8 +155,8 @@ color: #ffffff;
 }
 
 /* Footer styles */
-footer {
-  background-image: url('images/bg1.png');
+.footer-container {
+  background-image: url('images/bg2.png');
   background-color: #292929;
   color: #ffffff; 
   padding: 20px 0;
@@ -155,87 +187,14 @@ footer {
 .social-icons i {
   font-size: 24px;
   margin: 0 10px;
-  color: #fbbd2e;
+  color: #e3a6de;
+}
+
+.social-icons i:hover {
+  color: #c04db8;
 }
 
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
   /* Add responsive styles here */
-}
-
-.hero .container{
-  background-image: url(images/bgG.jpg);
-  background-size: cover;
-  height: 400px;
-  width: 650px;
-  border-radius: 3px;
-  border: 1px solid rgba(0, 0, 0, 0.519);
-}
-
-.square {
-  height: 50px;
-  width: 100px;
-  background-color: #555;
-  position: absolute;
-  margin: 2%;
-  justify-content: center;
-  animation: updown 2s linear infinite;
-  background-image: url('images/bgB.jpg');
-  background-size: cover;
-  box-shadow: 5px 5px #00000028;
-  border-radius: 4px;
-}
-
-
-@keyframes updown {
-  0%, 100% {
-      bottom: 0;
-  }
-  50% {
-      bottom: 10px;
-  }
-}
-
-.post{
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
-.post-title{
-  margin: 10px 0px 5px 0px;
-}
-
-.post .user-profile {
-  display: flex; 
-  align-items: center; 
-}
-
-.post .user-profile img {
-  width: 75px; 
-  height: 75px; 
-  border-radius: 50%; 
-  margin-right: 10px; 
-}
-
-.user-info {
-  display: flex;
-  flex-direction: column; 
-}
-
-.user-name {
-  font-size: 16px;
-  margin-top: 30px;
-}
-
-.post-content img {
-  width: 70%; 
-  max-width: 100%; 
-  height: auto; 
-  display: block;
-  margin: 5px 0px 5px 0px; 
-}
-
-.post-text {
-  width: 70%;
-  text-align: justify;
 }

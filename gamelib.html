@@ -2,33 +2,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Include your CSS and JavaScript files -->
-    <link rel="stylesheet" href="styles/gamelib.css">
-    <script src="game-library.js"></script>
+    <title> Game Library - GamersNook! </title>
+    
+      <!-- Link to Bootstrap CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+      <!-- CSS Files -->
+      <link rel="stylesheet" href="styles/general.css">
+      <link rel="stylesheet" href="styles/gamelib.css"/>
+      
+      <!-- Font Awesome for icons -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
     <header>
-        <h1>My Game Library</h1>
+        <!-- Navigation bar -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="#"> GamersNook! </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html"><i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="gamelib.html"><i class="fas fa-gamepad"></i> Game Library</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reviews.html"><i class="fas fa-star"></i> Reviews</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="forums.html"><i class="fas fa-comments"></i> Forums</a>
+                        </li> -->
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="#startNewChat"><i class="fas fa-envelope"></i> Messages</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
-    <main>
-        <section class="add-game">
-            <h2>Add a Game</h2>
-            <form id="addGameForm">
-                <input type="text" id="gameTitle" placeholder="Game Title" required>
-                <input type="text" id="gamePlatform" placeholder="Platform (e.g., PC, PS5)">
-                <input type="number" id="gameYear" placeholder="Release Year">
-                <button type="submit">Add</button>
-            </form>
-        </section>
-        <section class="game-list">
-            <h2>My Games</h2>
-            <ul id="gameList">
-                <!-- Game items will be added here dynamically -->
-            </ul>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2023 GamersNook! All Rights Reserved</p>
-    </footer>
+
+    <div class="add-game">
+        <h2> Add a Game </h2>
+        <form id="addGameForm">
+            <input type="text" id="gameTitle" placeholder="Game Title" required>
+            <input type="text" id="gamePlatform" placeholder="Platform (e.g., PC, PS5)">
+            <input type="number" id="gameYear" placeholder="Release Year">
+            <button type="submit"> Add </button>
+        </form>
+    </div>
+
+    <div class="game-list">
+        <h2>My Games</h2>
+        <ul id="game-items">
+            <!-- Game items will be added here dynamically -->
+        </ul>
+    </div>
+
+    <div class="footer-container">
+        <ul class="footer-links">
+            <li><a href="#"> Privacy Policy </a></li>
+            <li><a href="#"> Terms of Service </a></li>
+            <li><a href="#"> Contact Us </a></li>
+            <li><a href="#"> About Us </a></li>
+        </ul>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <!-- JavaScript files -->
+    <script src="javascript/script.js"></script>
 </body>
 </html>
