@@ -29,21 +29,21 @@ header {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #ffffff6a;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .add-game h2,
 .game-list h2 {
     font-size: 24px;
     margin-top: 0;
-    color: rgb(160, 157, 157);
+    color: rgba(160, 157, 157, 0.554);
 }
 
 .add-game:hover {
     background-image: url('images/bgA.jpg');
-    background-size: contain;
+    background-size: cover;
     transition-duration: 0.5s;
 }
 
@@ -57,7 +57,7 @@ form input[type="number"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #ccccccbc;
     border-radius: 4px;
     font-size: 16px;
 }
@@ -95,7 +95,6 @@ form button:hover {
 }
 
 .game-list:hover {
-    background-image: url('images/bg1.png');
     transition-duration: 0.5s;
 }
 
@@ -191,3 +190,4 @@ form button:hover {
         font-size: 14px;
     }
 }
+

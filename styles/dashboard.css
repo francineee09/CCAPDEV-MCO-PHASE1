@@ -24,17 +24,18 @@ header {
 
 /* Form styles */
 .card {
-    background-color: #ffffff;
+    background-color: #ffffff66;
     color: #333; 
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.card:hover{
+.card-body:hover{
     color: #ffffff;
-    background-image: url('images/bgH.jpg');
     background-size: cover;
     transition-duration: 0.5s;
+    border-radius: 3px;
+    margin: 2%;
 }
 
 .card-header {
@@ -87,7 +88,6 @@ header {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    border: solid;
 }
 
 .btn-primary:hover {
@@ -124,7 +124,7 @@ header {
 /* Style the "Start New Chat" icon */
 .new-chat-icon {
     font-size: 24px; 
-    color: #BF5AA2;
+    color: #ff3ac7;
     cursor: pointer;
     width: 30px;
 }
@@ -135,7 +135,7 @@ header {
     bottom: 20px;
     right: 20px;
     width: 500px; 
-    background-color: #3A6577;
+    background-color: #050093;
     border: 1px solid #444;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
@@ -149,7 +149,7 @@ header {
 }
 
 .chat-header {
-    background-color: #291F43;
+    background-color: #08001b;
     color: #fff;
     padding: 10px;
     display: flex;
@@ -173,7 +173,7 @@ header {
 }
 
 .message {
-    background-color: #3c3c3c;
+    background-color: #4f0000;
     color: #fff;
     border-radius: 5px;
     padding: 8px;
@@ -235,7 +235,7 @@ header {
 /* Chat Sidebar */
 .chat-sidebar {
     width: 30%; 
-    background-color: #B5D0C4;
+    background-color: #20004a;
     padding: 10px;
     border-right: 1px solid #ccc;
     overflow-y: auto;
@@ -256,7 +256,8 @@ header {
 }
 
 .chat-entry.active {
-    background-color: #bf5aa2ad; 
+    background-color: #ff00b7ad; 
+    border-radius: 6px;
 }
 
 /* Footer styles */
@@ -297,4 +298,8 @@ header {
 
 .social-icons i:hover {
     color: #c04db8;
+}
+
+.profile-pic{
+    width: 200px;
 }
