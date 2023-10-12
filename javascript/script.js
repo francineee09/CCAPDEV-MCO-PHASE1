@@ -2,42 +2,42 @@
 document.addEventListener('DOMContentLoaded', function () {
     const signupForm = document.getElementById('signup-form');
 
-    signupForm.addEventListener('submit', async function (event) {
-        event.preventDefault(); // Prevent the form from submitting by default
+    signupForm.addEventListener('submit', async function (event){
+        event.preventDefault(); // Preventing the form from submitting by default
 
-        // Get form input values
+        // User input values
         const username = document.getElementById('username').value;
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirm-password').value;
 
-        // Client-side validation
+        // Password validation
         if (password !== confirmPassword) {
             alert('Passwords do not match. Please try again.');
-            return; // Prevent form submission if passwords don't match
+            return;
         }
 
-        // Email Format Validation
+        // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             alert('Please enter a valid email address.');
             return;
         }
 
-        // Password Strength Validation
+        // Password strength validation
         if (password.length < 8 || !/[A-Za-z]/.test(password) || !/\d/.test(password)) {
             alert('Password must be at least 8 characters long and contain both letters and numbers.');
             return;
         }
 
-        // If client-side validation passes, send the data to the server for registration
+        // If user validation is correct, send the data to the server to register
         const userData = {
             username: username,
             email: email,
             password: password,
         };
 
-        // Send the user data to the server using a fetch or AJAX request
+        // Send the user data to the server using a fetch request
         try {
             const response = await fetch('/api/signup', {
                 method: 'POST',
@@ -48,11 +48,11 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             if (response.ok) {
-                // Registration successful, you can redirect to a login page or display a success message
+                // If registration is successful, redirect to a login page or display a success message
                 alert('Registration successful! Please log in.');
-                signupForm.reset(); // Clear the form fields
+                signupForm.reset(); // Clearing of form fields
             } else {
-                // Registration failed, handle errors (e.g., duplicate username or email)
+                // If registration failed, error handling such as duplication
                 const errorData = await response.json();
                 alert(`Registration failed: ${errorData.message}`);
             }
@@ -62,76 +62,75 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-//up until here
 
+/*************************************************************/
 
-//Login
+// Login
 document.addEventListener('DOMContentLoaded', function () {
     const loginForm = document.getElementById('login-form');
 
     loginForm.addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent the form from submitting by default
+        event.preventDefault(); // Preventing the form from submitting by default
 
-        // Get form input values
+        // User input values
         const usernameOrEmail = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
-        // Client-side validation (checking for non-empty fields)
+        // User validation, checks for non-empty fields
         if (!usernameOrEmail || !password) {
             alert('Please fill in all fields.');
-            return; // Prevent form submission if any field is empty
+            return; // If field is empty, prevents from submission
         }
 
-        // If client-side validation passes, you can send the data to the server for further processing
+        // If user validation is a success, send the data to the server for further processing
         const userData = {
             usernameOrEmail: usernameOrEmail,
             password: password,
         };
 
-        // Simulate sending data to the server for authentication (replace this with actual server interaction)
+        // Simulate sending data to the server for authentication, must replace with actual server interaction
         console.log('User data to be sent to the server for login:', userData);
 
-        // Clear the form or redirect to a dashboard on successful login
-        loginForm.reset(); // Clear the form fields
+        // Clear the form or redirect user to a dashboard
+        loginForm.reset(); // Clearing of form fields
     });
 });
-//up until here
 
+/*************************************************************/
 
-
-// Function to handle post submission
+// Function of handling post submission
 function submitPost(event) {
     event.preventDefault();
 
-    // Get post title, content, and media (if any)
+    // User input for post title, content, and media
     const postTitle = document.getElementById("postTitle").value;
     const postContent = document.getElementById("postContent").value;
     const mediaUpload = document.getElementById("mediaUpload").files[0];
 
-    // Create a new post card
+    // For creation of new post card
     const postCard = document.createElement("div");
     postCard.classList.add("card", "mb-4");
 
-    // Create post card body
+    // For creation of post body
     const cardBody = document.createElement("div");
     cardBody.classList.add("card-body");
 
-    // Create post title element
+    // For creation of post title element
     const cardTitle = document.createElement("h3");
     cardTitle.classList.add("card-title");
     cardTitle.textContent = postTitle;
 
-    // Create post text element
+    // For creation of post text element
     const cardText = document.createElement("p");
     cardText.classList.add("card-text");
     cardText.textContent = postContent;
 
-    // Append elements to the card
+    // Appending of elements to the card
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardText);
     postCard.appendChild(cardBody);
 
-    // Display media if provided
+    // Media display
     if (mediaUpload) {
         const mediaElement = document.createElement("img");
         mediaElement.src = URL.createObjectURL(mediaUpload);
@@ -139,10 +138,10 @@ function submitPost(event) {
         cardBody.appendChild(mediaElement);
     }
 
-    // Get the container for existing posts
+    // Container for existing posts
     const postContainer = document.querySelector(".col-md-8");
     
-    // Insert the new post after the last post (before the "Create a New Post" card)
+    // New post insertion after last post 
     const lastPost = postContainer.querySelector(".card:last-child");
     postContainer.insertBefore(postCard, lastPost.nextSibling);
 
@@ -155,20 +154,21 @@ const postForm = document.getElementById("postForm");
 postForm.addEventListener("submit", submitPost);
 
 $(document).ready(function() {
-    // Enable Bootstrap collapse
+    // Enables the Bootstrap collapse
     $('[data-toggle="collapse"]').collapse();
 
-    // Handle click events on the "Messages" link to toggle the panel
+    // Handling of click events on the "Messages" link to toggle the panel
     $('.nav-link[data-toggle="collapse"]').on('click', function() {
-        // Close all other open panels when clicking on this link
+        // Close all other open panels if user clicks on this link
         $('.nav-link[data-toggle="collapse"]').not(this).each(function() {
             $($(this).data('target')).collapse('hide');
         });
     });
 });
-//up until here
 
-//MESSAGES
+/*************************************************************/
+
+// Messages
 document.addEventListener("DOMContentLoaded", function () {
     const chatIcon = document.getElementById("chatIcon");
     const chatBox = document.getElementById("chatBox");
@@ -189,10 +189,10 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("chatData", JSON.stringify(chatData));
     }
 
-    // Create an object to store chat messages for each chat entry
+    // Creates an object to store chat messages for each chat entry
     let chatData = loadChatData();
 
-    // Initialize the active chat entry
+    // Initializes the active chat entry
     let activeChatEntry = null;
 
     // Function to toggle the chat box visibility
@@ -200,7 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
         chatBox.style.display = chatBox.style.display === "none" ? "block" : "none";
     }
 
-    // Close the chat box by default when the page loads
+    // Closes the chat box by default when the page loads
     chatBox.style.display = "none";
 
     // Event listener to toggle the chat box
@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
         messageElement.innerText = messageText;
         chatMessages.appendChild(messageElement);
 
-        // Scroll to the bottom after adding a new message
+        // Scrolls to the bottom after adding a new message
         scrollToBottom();
     }
 
@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function () {
             addMessage(messageText, "user");
             messageInput.value = "";
 
-            // If there is an active chat entry, add the message to its chatData
+            // If there is an active chat entry, add the message to chatData
             if (activeChatEntry) {
                 const chatName = activeChatEntry.querySelector("span").innerText;
                 if (!chatData[chatName]) {
@@ -278,14 +278,15 @@ document.addEventListener("DOMContentLoaded", function () {
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    // Example: Adding some initial messages
-    chatEntries[0].click(); // Simulate clicking on the first chat entry to display its messages
+    // To add some initial messages
+    chatEntries[0].click(); // For clicking on the first chat entry to display its messages
 });
 
-//game-library
-// game-library.js
+/*************************************************************/
 
-// Sample data to simulate user's game library
+// Game Library
+
+// Sample data for user's game library
 const userGames = [];
 
 // Function to add a game to the library
@@ -315,14 +316,16 @@ document.getElementById('addGameForm').addEventListener('submit', (event) => {
     if (gameTitle) {
         addGame(gameTitle);
         displayLibrary();
-        document.getElementById('gameTitle').value = ''; // Clear the input field
+        document.getElementById('gameTitle').value = ''; // Clears the input field
     }
 });
 
 // Initial display of the game library
 displayLibrary();
 
-//for read more
+/*************************************************************/
+
+// Function for read more
 function myFunction(game) {
     let dots = document.querySelector(`.post-info-container[data-game="${game}"] .dots`);
     let moreText = document.querySelector(`.post-info-container[data-game="${game}"] .more`);
