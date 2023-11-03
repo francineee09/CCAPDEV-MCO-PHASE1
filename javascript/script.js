@@ -153,6 +153,26 @@ function submitPost(event) {
 const postForm = document.getElementById("postForm");
 postForm.addEventListener("submit", submitPost);
 
+// Search function
+function searchPosts() {
+    const searchInput = document.getElementById("postSearch").value.toLowerCase();
+    const postCards = document.querySelectorAll(".card");
+
+    postCards.forEach((postCard) => {
+        const postTitle = postCard.querySelector(".card-title").textContent.toLowerCase();
+
+        if (postTitle.includes(searchInput)) {
+            postCard.style.display = "block";
+        } else {
+            postCard.style.display = "none";
+        }
+    });
+}
+
+// Event listener for the search button
+const searchButton = document.getElementById("searchButton");
+searchButton.addEventListener("click", searchPosts);
+
 $(document).ready(function() {
     // Enables the Bootstrap collapse
     $('[data-toggle="collapse"]').collapse();
@@ -243,7 +263,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // Scrolls to the bottom after adding a new message
         scrollToBottom();
     }
-    
 
     messageInput.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {

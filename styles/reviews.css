@@ -5,10 +5,14 @@ body{
 /* Header styles */
 header {
     font-family: var(--header-font);
-    background-color: rgba(255, 255, 255, 0.271);
+    /* background-color: rgba(255, 255, 255, 0.271); */
+    background-color: #464867;
     padding: 10px 0;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.432);
     border-bottom: 1.5px solid rgba(76, 79, 84, 0.593);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .navbar-brand {
@@ -20,6 +24,18 @@ header {
     background-clip:text; 
     font-size: 32px;
     color: #99f3ff;
+}
+
+.search-box {
+  float: inline-end;
+  margin-left: 2%;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#search {
+  width: 200px;
 }
 
 /* Latest content section styles */
@@ -250,12 +266,4 @@ p {
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
  
-}
-
-.search-box{
-  float: inline-end;
-  margin-right: 2%;
-  position: sticky;
-  top: 0; left: 0; right: 0;
-  z-index: 1000;
 }
