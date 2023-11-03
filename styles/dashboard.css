@@ -121,7 +121,6 @@ header {
     height: 60px;
 }
 
-/* Style the "Start New Chat" icon */
 .new-chat-icon {
     font-size: 24px; 
     color: #ff3ac7;
@@ -134,7 +133,7 @@ header {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 500px; 
+    width: 600px; 
     background-color: #050093;
     border: 1px solid #444;
     border-radius: 10px;
@@ -232,6 +231,13 @@ header {
     background-color: #9c2b4b;
 }
 
+.timestamp {
+    font-size: 0.8em;
+    color: #888;
+    display: block; /* timestamp appear on a new line */
+    margin-top: 5px; /* some space between the message and timestamp */
+}
+
 /* Chat Sidebar */
 .chat-sidebar {
     width: 30%; 
@@ -259,6 +265,31 @@ header {
     background-color: #ff00b7ad; 
     border-radius: 6px;
 }
+
+/* Search bar styles */
+.chat-search {
+    padding: 10px;
+}
+
+#chatSearchInput {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    background-color: #20004a;
+    color: #fff;
+    font-size: 14px;
+}
+
+#chatSearchInput::placeholder {
+    color: #ccc;
+}
+
+#chatSearchInput:focus {
+    border-color: #ff00b7ad;
+}
+
 
 /* Footer styles */
 .footer-container {

@@ -211,12 +211,39 @@ document.addEventListener("DOMContentLoaded", function () {
     function addMessage(messageText, sender) {
         const messageElement = document.createElement("div");
         messageElement.classList.add("message", sender);
-        messageElement.innerText = messageText;
+    
+        // Create a span for the message text
+        const messageTextElement = document.createElement("span");
+        messageTextElement.innerText = messageText;
+    
+        messageElement.appendChild(messageTextElement);
+    
+        // Create a span for the formatted timestamp
+        const timestampElement = document.createElement("span");
+        timestampElement.classList.add("timestamp");
+        
+        const now = new Date();
+        
+        const options = {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+        };
+    
+        const timestamp = now.toLocaleString('en-US', options);
+        
+        timestampElement.innerText = timestamp;
+    
+        messageElement.appendChild(timestampElement);
+    
         chatMessages.appendChild(messageElement);
-
+    
         // Scrolls to the bottom after adding a new message
         scrollToBottom();
     }
+    
 
     messageInput.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
@@ -281,6 +308,45 @@ document.addEventListener("DOMContentLoaded", function () {
     // To add some initial messages
     chatEntries[0].click(); // For clicking on the first chat entry to display its messages
 });
+
+// Event listener for starting a new chat
+document.getElementById("startNewChat").addEventListener("click", function () {
+    // Open a dialog or input field to select or enter the chat name(s)
+    const chatName = prompt("Enter the chat name or select a contact:");
+    
+    if (chatName) {
+        // Check if it's a one-on-one chat or a group chat
+        if (chatName.includes(',')) {
+            // It's a group chat
+            activeChat = chatName;
+        } else {
+            // It's a one-on-one chat
+            activeChat = chatName;
+        }
+        
+        // Clear individual chat messages
+        clearChatMessages();
+        
+        // Display chat messages
+        displayChat();
+    }
+});
+
+// Event listener for the search bar
+const chatSearchInput = document.getElementById("chatSearchInput");
+chatSearchInput.addEventListener("input", function () {
+    const searchTerm = chatSearchInput.value.toLowerCase();
+
+    chatEntries.forEach(function (entry) {
+        const chatName = entry.querySelector("span").innerText.toLowerCase();
+        if (chatName.includes(searchTerm)) {
+            entry.style.display = "block"; // Show matching chat entries
+        } else {
+            entry.style.display = "none"; // Hide non-matching chat entries
+        }
+    });
+});
+
 
 /*************************************************************/
 
