@@ -50,6 +50,9 @@ header {
 }
 
 .profile-container {
+  position: sticky;
+  top: 0; left: 0; right: 0;
+  z-index: 500;
   display: flex;
   align-items:center;
   flex-direction: column;
@@ -247,4 +250,12 @@ p {
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
  
+}
+
+.search-box{
+  float: inline-end;
+  margin-right: 2%;
+  position: sticky;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
 }
