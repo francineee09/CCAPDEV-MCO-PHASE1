@@ -153,26 +153,6 @@ function submitPost(event) {
 const postForm = document.getElementById("postForm");
 postForm.addEventListener("submit", submitPost);
 
-// Search function
-function searchPosts() {
-    const searchInput = document.getElementById("postSearch").value.toLowerCase();
-    const postCards = document.querySelectorAll(".card");
-
-    postCards.forEach((postCard) => {
-        const postTitle = postCard.querySelector(".card-title").textContent.toLowerCase();
-
-        if (postTitle.includes(searchInput)) {
-            postCard.style.display = "block";
-        } else {
-            postCard.style.display = "none";
-        }
-    });
-}
-
-// Event listener for the search button
-const searchButton = document.getElementById("searchButton");
-searchButton.addEventListener("click", searchPosts);
-
 $(document).ready(function() {
     // Enables the Bootstrap collapse
     $('[data-toggle="collapse"]').collapse();
@@ -426,3 +406,39 @@ function myFunction(game) {
       moreText.style.display = "inline";
     }
 }
+
+/*************************************************************/
+
+// Updated searchPosts function to search and display results
+function searchPosts() {
+    const searchInput = document.getElementById("postSearch").value.toLowerCase();
+    const postCards = document.querySelectorAll(".user-container");
+    const searchResults = document.getElementById("searchResults");
+    
+    // Clear previous search results
+    searchResults.innerHTML = '';
+
+    postCards.forEach((postCard) => {
+        const postTitle = postCard.querySelector(".title").textContent.toLowerCase();
+
+        if (postTitle.includes(searchInput)) {
+            postCard.style.display = "block";
+
+            // Create a link to the post
+            const postLink = document.createElement("a");
+            postLink.href = "#"; // Update the href to link to the post
+            postLink.textContent = postTitle;
+            postLink.onclick = () => {
+                // Redirect to the post or perform the desired action
+                alert("Redirect to the post: " + postTitle);
+            };
+            searchResults.appendChild(postLink);
+        } else {
+            postCard.style.display = "none";
+        }
+    });
+}
+
+// Event listener for the search button
+const searchButton = document.getElementById("searchButton");
+searchButton.addEventListener("click", searchPosts);
