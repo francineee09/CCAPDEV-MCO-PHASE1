@@ -1,121 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <title>User Profile - GamersNook!</title>
-        <link rel="icon" type="image/x-icon" href="/styles/images/fav2.png">
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        
-        <!-- CSS Files -->
-        <link rel="stylesheet" href="styles/general.css">
-        <link rel="stylesheet" href="styles/profile.css">
-        
-        <!-- Font Awesome for icons -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    </head>
-    <body>
-        <header>
-            <!-- Navigation bar -->
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container">
-                    <a class="navbar-brand" href="#"> GamersNook! </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>User Profile - GamersNook!</title>
+    <link rel="icon" type="image/x-icon" href="/styles/images/fav2.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/profile.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <!-- Navigation bar -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="#"> GamersNook! </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html"><i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="gamelib.html"><i class="fas fa-gamepad"></i> Game Library</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reviews.html"><i class="fas fa-star"></i> Reviews</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-3">
+                    <!-- User Profile Card -->
+                    <div class="card">
+                        <img src="styles/images/togepost.png" class="card-img-top" alt="User Avatar">
+                        <div class="card-body">
+                            <h5 class="card-title"> Alicia Smith </h5>
+                            <p class="card-text">aliciasmith@gmail.com</p>
+                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editProfileModal">Edit Profile</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-9">
+                    <!-- Bio and Achievements Section -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Gaming Bio</h5>
+                            <p class="card-text">🎮 About Me 🎮</p>
+                            <p class="card-text">Hey there! I'm Alicia, your friendly neighborhood gamer. 🕹️</p>
+                            <br>
+                            <p class="card-text">
+                                🕺 I'm a 22-year-old gamer who's been exploring virtual worlds since
+                                I can remember. When I'm not in front of my screen, you'll find me cooking.
+                            </p>
+                            <br>
+                            <p class="card-text">🎯Gaming Interests: </p>
+                            <p class="card-text">
+                                I'm a Console & PC gamer who's into a wide range of games.
+                                My favorites include Overwatch, but I'm always up for a good challenge or an
+                                epic adventure.
+                            </p>
+                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editBioModal">Edit Bio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal" id="editProfileModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="dashboard.html"><i class="fas fa-home"></i> Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="profile.html"><i class="fas fa-user"></i> Profile</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="gamelib.html"><i class="fas fa-gamepad"></i> Game Library</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="reviews.html"><i class="fas fa-star"></i> Reviews</a>
-                            </li>
-                            <!-- <li class="nav-item">
-                                <a class="nav-link" href="forums.html"><i class="fas fa-comments"></i> Forums</a>
-                            </li> -->
-                            <!-- <li class="nav-item">
-                                <a class="nav-link" href="#startNewChat"><i class="fas fa-envelope"></i> Messages</a>
-                            </li> -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="index.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
-            </nav>
-        </header>
-
-        <main>
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <!-- User Profile Card -->
-                        <div class="card">
-                            <img src="styles/images/togepost.png" class="card-img-top" alt="User Avatar">
-                            <div class="card-body">
-                                <h5 class="card-title"> Alicia Smith </h5>
-                                <p class="card-text">aliciasmith@gmail.com</p>
-                                <a href="#" class="btn btn-primary">Edit Profile</a>
-                            </div>
+                <div class="modal-body">
+                    <form id="profile-form">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="Enter your username">
                         </div>
-                    </div>
-                    
-                    <div class="col-lg-9">
-                        <!-- Bio and Achievements Section -->
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Gaming Bio</h5>
-                                <p class="card-text">🎮 About Me 🎮</p>
-                                <p class="card-text">Hey there! I'm Alicia, your friendly neighborhood gamer. 🕹️</p>
-                                <br>
-                                <p class="card-text">
-                                    🕺 I'm a 22-year-old gamer who's been exploring virtual worlds since
-                                    I can remember. When I'm not in front of my screen, you'll find me cooking.
-                                </p>
-                                <br>
-                                <p class="card-text">🎯Gaming Interests: </p>
-                                <p class="card-text">
-                                    I'm a Console & PC gamer who's into a wide range of games.
-                                    My favorites include Overwatch, but I'm always up for a good challenge or an
-                                    epic adventure.
-                                </p>
-                                <a href="#" class="btn btn-primary">Edit Bio</a>
-                            </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email">
                         </div>
-                    </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveProfileButton">Save</button>
                 </div>
             </div>
-        </main>
+        </div>
+    </div>
 
-        <!--<div class="footer-container">
-            <ul class="footer-links">
-                <li><a href="#"> Privacy Policy </a></li>
-                <li><a href="#"> Terms of Service </a></li>
-                <li><a href="#"> Contact Us </a></li>
-                <li><a href="#"> About Us </a></li>
-            </ul>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+    <!-- Edit Bio Modal -->
+    <div class="modal" id="editBioModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Bio</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="bio-form">
+                        <div class="form-group">
+                            <label for="bio-text">Bio</label>
+                            <textarea class="form-control" id="bio-text" rows="3" placeholder="Tell us about yourself"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveBioButton">Save</button>
+                </div>
             </div>
-        </div>-->
+        </div>
+    </div>
 
-        <!-- Bootstrap JavaScript and jQuery -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Bootstrap JavaScript and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-            <!-- JavaScript Files -->
-            <script src="javascript/script.js"></script>
-    </body>
+    <!-- JavaScript Files -->
+    <script src="javascript/script.js"></script>
+</body>
 </html>
