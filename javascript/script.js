@@ -447,31 +447,27 @@ searchButton.addEventListener("click", searchPosts);
 
 //Profile edit buttons
 document.addEventListener("DOMContentLoaded", function() {
-        const saveProfileButton = document.getElementById("saveProfileButton");
-        const saveBioButton = document.getElementById("saveBioButton");
-        const profileForm = document.getElementById("profile-form");
-        const bioForm = document.getElementById("bio-form");
-        const usernameElement = document.getElementById("username");
-        const emailElement = document.getElementById("email");
-        const bioTextElement = document.getElementById("bio-text");
+    const saveProfileButton = document.getElementById("saveProfileButton");
+    const saveBioButton = document.getElementById("saveBioButton");
+    const profileForm = document.getElementById("profile-form");
+    const bioForm = document.getElementById("bio-form");
+    const usernameElement = document.getElementById("username");
+    const emailElement = document.getElementById("email");
+    const bioTextElement = document.getElementById("bio-text");
 
-        saveProfileButton.addEventListener("click", function() {
-            const newUsername = usernameElement.value;
-            const newEmail = emailElement.value;
+    saveProfileButton.addEventListener("click", function() {
+        const newUsername = usernameElement.value;
+        const newEmail = emailElement.value;
 
-            // Update the user's profile information on the page
-            document.querySelector(".card-title").textContent = newUsername;
-            document.querySelector(".card-text").textContent = newEmail;
-        });
+        document.querySelector(".card-title").textContent = newUsername;
+        document.querySelector(".card-text").textContent = newEmail;
+    });
 
-        saveBioButton.addEventListener("click", function() {
-            const newBio = bioTextElement.value;
+    saveBioButton.addEventListener("click", function() {
+        const newBio = bioTextElement.value;
 
-            // Update the user's bio on the page
-            document.querySelectorAll(".card-text")[2].textContent = newBio;
-        });
+        document.querySelectorAll(".card-text")[2].textContent = newBio;
+    });
 });
-
-
 
 /*************************************************************/

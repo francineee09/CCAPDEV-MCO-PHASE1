@@ -51,7 +51,11 @@
                 <div class="col-lg-3">
                     <!-- User Profile Card -->
                     <div class="card">
-                        <img src="styles/images/togepost.png" class="card-img-top" alt="User Avatar">
+                        <div class="card-body">
+                            <img src="styles/images/togepost.png" class="card-img-top" alt="User Avatar">   
+                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editProfilePictureModal">Edit Picture</a>
+                        </div>
+
                         <div class="card-body">
                             <h5 class="card-title"> Alicia Smith </h5>
                             <p class="card-text">aliciasmith@gmail.com</p>
@@ -86,6 +90,33 @@
             </div>
         </div>
     </main>
+
+    <!-- Edit Profile Picture Modal -->
+    <div class="modal" id="editProfilePictureModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Profile Picture</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="profile-picture-form">
+                        <div class="form-group">
+                            <label for="profilePicture">Profile Picture</label>
+                            <input type="file" class="form-control-file" id="profilePicture" accept="image/*">
+                            <small class="form-text text-muted">Choose a new profile picture.</small>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveProfilePictureButton">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Edit Profile Modal -->
     <div class="modal" id="editProfileModal" tabindex="-1" role="dialog">
