@@ -410,38 +410,30 @@ function myFunction(game) {
 /*************************************************************/
 
 // Updated searchPosts function to search and display results
-function searchPosts() {
-    const searchInput = document.getElementById("postSearch").value.toLowerCase();
-    const postCards = document.querySelectorAll(".user-container");
-    const searchResults = document.getElementById("searchResults");
-    
-    // Clear previous search results
-    searchResults.innerHTML = '';
+// Get references to the search input and post titles
+function searching(){
+    var searchInput = document.getElementById('search');
+    var postTitles = document.querySelectorAll('.post-title .title');
 
-    postCards.forEach((postCard) => {
-        const postTitle = postCard.querySelector(".title").textContent.toLowerCase();
+    // Add an event listener to the search input
+    searchInput.addEventListener('input', function() {
+        // Get the search query from the input
+        var searchQuery = searchInput.value.toLowerCase();
 
-        if (postTitle.includes(searchInput)) {
-            postCard.style.display = "block";
+        // Loop through each post title and check if it contains the search query
+        postTitles.forEach(function(title) {
+            var postTitle = title.textContent.toLowerCase();
+            var postContainer = title.parentElement.parentElement.parentElement;
 
-            // Create a link to the post
-            const postLink = document.createElement("a");
-            postLink.href = "#"; // Update the href to link to the post
-            postLink.textContent = postTitle;
-            postLink.onclick = () => {
-                // Redirect to the post or perform the desired action
-                alert("Redirect to the post: " + postTitle);
-            };
-            searchResults.appendChild(postLink);
-        } else {
-            postCard.style.display = "none";
-        }
+            // If the post title contains the search query, show the post; otherwise, hide it
+            if (postTitle.includes(searchQuery)) {
+                postContainer.style.display = 'block';
+            } else {
+                postContainer.style.display = 'none';
+            }
+        });
     });
 }
-
-// Event listener for the search button
-const searchButton = document.getElementById("searchButton");
-searchButton.addEventListener("click", searchPosts);
 
 /*************************************************************/
 
