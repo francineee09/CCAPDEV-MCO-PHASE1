@@ -41,10 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                       <i class="fa fa-commenting-o"></i>
                                       <span class="ml-1 reply">Comment</span>
                                   </div>
-                                  <div class="like p-2 cursor">
-                                      <i class="fa fa-share"></i>
-                                      <span class="ml-1">Share</span>
-                                  </div>
                               </div>
                           </div>`;
         return div;

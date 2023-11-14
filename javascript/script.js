@@ -97,7 +97,15 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /*************************************************************/
-
+function getFormattedDate() {
+    const now = new Date();
+    const options = {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+    };
+    return now.toLocaleString('en-US', options);
+}
 // Function of handling post submission
 function submitPost(event) {
     event.preventDefault();
@@ -106,6 +114,9 @@ function submitPost(event) {
     const postTitle = document.getElementById("postTitle").value;
     const postContent = document.getElementById("postContent").value;
     const mediaUpload = document.getElementById("mediaUpload").files[0];
+
+    // Get the formatted date
+    const postDate = getFormattedDate();
 
     // For creation of new post card
     const postCard = document.createElement("div");
@@ -125,9 +136,15 @@ function submitPost(event) {
     cardText.classList.add("card-text");
     cardText.textContent = postContent;
 
+    // For creation of post date element
+    const cardDate = document.createElement("p");
+    cardDate.classList.add("date");
+    cardDate.textContent = postDate;
+
     // Appending of elements to the card
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardText);
+    cardBody.appendChild(cardDate);
     postCard.appendChild(cardBody);
 
     // Media display
@@ -138,10 +155,19 @@ function submitPost(event) {
         cardBody.appendChild(mediaElement);
     }
 
+    // For creation of delete button
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("btn", "btn-danger", "mt-2");
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", () => {
+        postCard.remove();
+    });
+    cardBody.appendChild(deleteButton);
+
     // Container for existing posts
     const postContainer = document.querySelector(".col-md-8");
     
-    // New post insertion after last post 
+    // New post insertion after the last post 
     const lastPost = postContainer.querySelector(".card:last-child");
     postContainer.insertBefore(postCard, lastPost.nextSibling);
 
@@ -152,19 +178,59 @@ function submitPost(event) {
 // Event listener for post submission
 const postForm = document.getElementById("postForm");
 postForm.addEventListener("submit", submitPost);
+//Event listener for post button click
+document.getElementById('postButton').addEventListener('click', function () {
+    addNewPostToReviews();
+});
 
+// Additional script for enabling Bootstrap collapse
 $(document).ready(function() {
-    // Enables the Bootstrap collapse
     $('[data-toggle="collapse"]').collapse();
 
     // Handling of click events on the "Messages" link to toggle the panel
     $('.nav-link[data-toggle="collapse"]').on('click', function() {
-        // Close all other open panels if user clicks on this link
         $('.nav-link[data-toggle="collapse"]').not(this).each(function() {
             $($(this).data('target')).collapse('hide');
         });
     });
+
 });
+
+function addNewPostToReviews() {
+    // Capture post details
+    var postTitle = document.getElementById('postTitle').value;
+    var postContent = document.getElementById('postContent').value;
+    
+    // Get user information
+    var userProfilePic = "styles/images/profile1.jpg"; // Replace with actual user profile picture
+    var username = "User 1"; // Replace with actual username
+
+    // Create a new post element
+    var newPost = document.createElement('div');
+    newPost.className = 'user-container';
+
+    // Create other elements (profile picture, post title, post content, etc.)
+
+    var postTitleElement = document.createElement('div');
+    postTitleElement.className = 'post-title';
+    postTitleElement.innerHTML = '<span class="title" onclick="navigateToUserProfile(\'' + userProfilePic + '\', \'' + username + '\')">' + postTitle + '</span>';
+    newPost.appendChild(postTitleElement);
+
+    var postTitleElement = document.createElement('div');
+    postTitleElement.className = 'post-title';
+    postTitleElement.innerHTML = '<span class="title">' + postTitle + '</span>';
+    newPost.appendChild(postTitleElement);
+
+    var postContentElement = document.createElement('div');
+    postContentElement.className = 'post-content';
+    postContentElement.innerHTML = '<p>' + postContent + '</p>';
+    newPost.appendChild(postContentElement);
+
+    // Append the new post to the reviews container
+    var reviewsContainer = document.getElementById('reviews-container');
+    reviewsContainer.appendChild(newPost);
+}
+
 
 /*************************************************************/
 
@@ -434,6 +500,31 @@ function searching(){
         });
     });
 }
+
+function searchPost() {
+    var searchInput = document.getElementById('searchButton');
+    var postTitles = document.querySelectorAll('.card .card-title');
+
+    // Add an event listener to the search input
+    searchInput.addEventListener('input', function () {
+        // Get the search query from the input
+        var searchQuery = searchInput.value.toLowerCase();
+
+        // Loop through each post title and check if it contains the search query
+        postTitles.forEach(function (title) {
+            var postTitle = title.textContent.toLowerCase();
+            var postContainer = title.closest('.card');
+
+            // If the post title contains the search query, show the post; otherwise, hide it
+            if (postTitle.includes(searchQuery)) {
+                postContainer.style.display = 'block';
+            } else {
+                postContainer.style.display = 'none';
+            }
+        });
+    });
+}
+
 
 /*************************************************************/
 

@@ -258,5 +258,9 @@ p {
 } 
 
 .all-comment:not(:first-child) { 
-	margin-left: 4rem; 
+	margin-left: 1rem; 
+}
+
+.post-date{
+  color:black;
 }
