@@ -69,6 +69,25 @@ app.get('/posts/:postID', (req, res) => {
   res.render('post', { postID });
 });
 
+// Route for the reviews page
+// Assuming you have a User model
+
+app.get('/reviews', async (req, res) => {
+    try {
+        // Fetch posts with associated user information
+        const reviewsData = await Post.find().populate('author').exec();
+
+        // Render the EJS template and pass the data
+        res.render('reviews', { reviewsData });
+    } catch (error) {
+        // Handle errors (log or render an error page)
+        console.error('Error fetching reviews:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
+
 app.post('/submit-post', upload.single('media'), async (req, res) => {
   console.log('Request Body:', req.body);
   console.log('Request File:', req.file);

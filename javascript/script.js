@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Check the message in the response for success
                 if (responseData.message === 'Login successful') {
                     // If login is successful, redirect the user to the dashboard
-                    window.location.href = '/dashboard';
+                    window.location.href = '/reviews';
                 } else {
                     // Handle unexpected success response
                     alert('Unexpected success response. Please try again.');

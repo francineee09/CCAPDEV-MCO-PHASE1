@@ -1,12 +1,12 @@
 //insertSampleData.js
 const mongoose = require('mongoose');
-const Post = require('./models/post');
-const Message = require('./models/message');
-const Profile = require('./models/profile'); 
+const Post = require('./server/schema/Post');
+const Message = require('./server/schema/Messages');
+const Profile = require('./server/schema/profile'); 
 
 
 // MongoDB connection string - replace 'yourDatabaseName' with your actual database name
-const dbURL = 'mongodb://localhost:27017/mygamewebsite'; 
+const dbURL = 'mongodb+srv://blabdue:iawynikd@blabdue.m4zqcqu.mongodb.net/test2'; 
 
 mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(async () => { // Added async here
