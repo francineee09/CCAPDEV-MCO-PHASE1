@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Send the user data to the server using a fetch request
         try {
-            const response = await fetch('/api/signup', {
+            const response = await fetch('http://localhost:3000/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -52,9 +52,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert('Registration successful! Please log in.');
                 signupForm.reset(); // Clearing of form fields
             } else {
-                // If registration failed, error handling such as duplication
                 const errorData = await response.json();
-                alert(`Registration failed: ${errorData.message}`);
+                if (errorData.error) {
+                    alert(`Registration failed: ${errorData.error}`);
+                } else {
+                    alert('Registration failed. Please check your input and try again.');
+                }
             }
         } catch (error) {
             console.error('Error:', error);
@@ -109,6 +112,26 @@ function getFormattedDate() {
 // Function of handling post submission
 function submitPost(event) {
     event.preventDefault();
+
+    const formData = new FormData();
+    formData.append('title', document.getElementById('postTitle').value);
+    formData.append('content', document.getElementById('postContent').value);
+    if (document.getElementById('mediaUpload').files.length > 0) {
+        formData.append('media', document.getElementById('mediaUpload').files[0]);
+    }
+
+    fetch('/submit-post', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        // Handle success, such as clearing the form or redirecting
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 
     // User input for post title, content, and media
     const postTitle = document.getElementById("postTitle").value;
@@ -196,6 +219,9 @@ $(document).ready(function() {
 
 });
 
+/****************************************************/
+//trying to add post to reviews when new post is created in dashboard
+
 function addNewPostToReviews() {
     // Capture post details
     var postTitle = document.getElementById('postTitle').value;
@@ -233,7 +259,84 @@ function addNewPostToReviews() {
 
 
 /*************************************************************/
+function sendMessage() {
+    console.log("sendMessage function is called.");
+    const messageContent = document.getElementById('messageInput').value; // Ensure this ID is correct
+    console.log('sendMessage called with:', messageContent); // This should appear in your console
+  
+    if (!messageContent.trim()) {
+      console.log('No message content to send');
+      return; // Don't attempt to send an empty message
+    }
+  
+    // Mock data for senderId and chatId, replace with real data later
+    const senderId = 'mockSenderId'; // Placeholder, replace with actual data when available
+    const chatId = 'mockChatId'; // Placeholder, replace with actual data when available
+  
+    console.log('Attempting to send message to server:', messageContent);
+  
+    fetch('http://localhost:3000/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        sender: senderId,
+        content: messageContent,
+        chat: chatId,
+      }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+      console.log('Message sent', data);
+      // Add message to the chat window here
+    })
+    
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  }
+  
+  document.getElementById('sendMessage').addEventListener('click', function() {
+    console.log('Send button clicked'); // This should show in the browser console when the send button is clicked
+    sendMessage();
+});
 
+  // Load chat history
+  function loadChatHistory(chatId) {
+    fetch(`/messages/${chatId}`)
+      .then(response => response.json())
+      .then(messages => {
+        messages.forEach(message => {
+          // Add each message to the chat window
+          console.log('Loaded message', message);
+        });
+      })
+      .catch(error => console.error('Error loading messages:', error));
+  }
+
+  function loadChats() {
+    fetch('/chats')
+      .then(response => response.json())
+      .then(chats => {
+        const chatContainer = document.getElementById('chat-container'); // Your chat container element
+        chatContainer.innerHTML = ''; // Clear existing chats
+        chats.forEach(chat => {
+          const chatMessage = document.createElement('div');
+          chatMessage.textContent = `${chat.sender}: ${chat.content}`;
+          chatContainer.appendChild(chatMessage);
+        });
+      })
+      .catch(error => console.error('Error loading chats:', error));
+  }
+  
+  document.addEventListener('DOMContentLoaded', loadChats); // Load chats when the page is fully loaded
+  
 // Messages
 document.addEventListener("DOMContentLoaded", function () {
     const chatIcon = document.getElementById("chatIcon");
@@ -244,6 +347,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const sendMessageButton = document.getElementById("sendMessage");
     const chatEntries = document.querySelectorAll(".chat-entry");
 
+    if(chatEntries.length > 0) {
+        loadChatHistory('mockChatId'); // Or the actual chat ID retrieved from the first chat entry
+    }
     // Function to load chat data from local storage
     function loadChatData() {
         const chatDataString = localStorage.getItem("chatData");
@@ -328,7 +434,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (messageText.trim() !== "") {
             addMessage(messageText, "user");
             messageInput.value = "";
-
+            
             // If there is an active chat entry, add the message to chatData
             if (activeChatEntry) {
                 const chatName = activeChatEntry.querySelector("span").innerText;
@@ -369,9 +475,9 @@ document.addEventListener("DOMContentLoaded", function () {
     function scrollToBottom() {
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
-
     // To add some initial messages
     chatEntries[0].click(); // For clicking on the first chat entry to display its messages
+    loadChats();
 });
 
 // Event listener for starting a new chat
@@ -542,6 +648,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const newUsername = usernameElement.value;
         const newEmail = emailElement.value;
 
+        // Update the user's profile information on the page
         document.querySelector(".card-title").textContent = newUsername;
         document.querySelector(".card-text").textContent = newEmail;
     });
@@ -549,8 +656,32 @@ document.addEventListener("DOMContentLoaded", function() {
     saveBioButton.addEventListener("click", function() {
         const newBio = bioTextElement.value;
 
+        // Update the user's bio on the page
         document.querySelectorAll(".card-text")[2].textContent = newBio;
     });
 });
 
+
 /*************************************************************/
+document.addEventListener('DOMContentLoaded', function () {
+    fetchPosts();
+});
+
+function fetchPosts() {
+    fetch('/posts')
+        .then(response => response.json())
+        .then(posts => {
+            const postsContainer = document.getElementById('postsContainer');
+            posts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.className = 'post';
+                postElement.innerHTML = `
+                    <h3>${post.title}</h3>
+                    <p>${post.content}</p>
+                    ${post.mediaPath ? `<img src="${post.mediaPath}" alt="Post Image" class="img-fluid">` : ''}
+                `;
+                postsContainer.appendChild(postElement);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+}

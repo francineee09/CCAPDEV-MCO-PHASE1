@@ -114,7 +114,7 @@ app.listen(3000, () => {
 });
 
 
-mongoose.connect('mongodb://localhost/mygamewebsite', {
+mongoose.connect('mongodb+srv://blabdue:iawynikd@blabdue.m4zqcqu.mongodb.net/test2', {
   useNewUrlParser: true, 
   useUnifiedTopology: true 
 }).then(() => {
@@ -131,7 +131,7 @@ app.post('/signup', async (req, res) => {
     // Check if user already exists
     let user = await User.findOne({ email: email });
     if (user) {
-      return res.status(400).send('Email already in use.');
+      return res.status(400).send({ error: 'Email already in use.' });
     }
     
     // Create a new user with hashed password
