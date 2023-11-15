@@ -15,7 +15,7 @@ const postSchema = new mongoose.Schema({
         },
         content: String,
         date: Date
-        // Other comment properties
+        // Other comment properties if ever there will be any additionals. 
     }
 ],
 });
