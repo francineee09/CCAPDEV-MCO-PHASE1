@@ -235,3 +235,14 @@ app.get('/posts', async (req, res) => {
       res.status(500).json({ message: 'Error in retrieving posts', error: error.message });
   }
 });
+
+//for posting comments
+app.post('/api/comments', async (req, res) => {
+  try {
+    const newComment = new Comment(req.body); // Assuming the request body contains the necessary data
+    const savedComment = await newComment.save();
+    res.status(201).json(savedComment);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
