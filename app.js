@@ -9,7 +9,22 @@ const bcrypt = require('bcryptjs');
 const Post = require('./server/schema/Post');
 const multer = require('multer');
 const Message = require('./server/schema/Messages');
-const Comment = require('./server/schema/Comments'); // Adjust the path accordingly
+const Comment = require('./server/schema/Comments');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+
+app.use(
+    session({
+      secret: process.env.SESSION_SECRET || 'fallback-secret-key',
+        resave: false,
+        saveUninitialized: true,
+        store: MongoStore.create({ 
+            mongoUrl: 'mongodb+srv://blabdue:iawynikd@blabdue.m4zqcqu.mongodb.net/test2',
+        }),
+        cookie: { maxAge: 1000 * 60 * 60 * 24 }, // Session cookie will expire after one day
+    })
+);
+
 
 app.use(express.static(path.join(__dirname)));
 
@@ -145,13 +160,13 @@ app.post('/test', async (req, res) => {
 
 app.post('/login', async (req, res) => {
   const { username, email, password } = req.body;
-  const check = await User.findOne({ email: email});
-  console.log('User found:', check);
+  const user = await User.findOne({ email: email});
+  console.log('User found:', user);
 
   try {
       const check = await User.findOne({ email: email});
 
-      if (!check) {
+      if (!user) {
           console.log('User not found');
           return res.status(400).json({ error: 'User not found' });
       }
@@ -159,6 +174,12 @@ app.post('/login', async (req, res) => {
       const isPasswordValid = await bcrypt.compare(password, check.password);
 
       if (isPasswordValid) {
+          // Store user data in the session
+          req.session.user = {
+            id: user._id,
+            username: user.username,
+        };
+
           console.log('Login successful!');
           res.status(200).json({ message: 'Login successful' });
       } else {
@@ -246,6 +267,27 @@ app.post('/api/comments', async (req, res) => {
   } catch (error) {
       console.error('Error adding comment:', error);
       res.status(500).send('Internal Server Error');
+  }
+});
+
+/**dahsboard **/
+app.get('/dashboard', async (req, res) => {
+  try {
+    // Check if the user is logged in
+    if (!req.session.user) {
+      // Redirect to login if not logged in
+      return res.redirect('/login'); // Adjust the login route as needed
+    }
+
+    // Fetch posts for the logged-in user
+    const userId = req.session.user._id;
+    const postsData = await Post.find({ author: userId });
+
+    // Render the EJS template and pass the posts data
+    res.render('dashboard', { postsData });
+  } catch (error) {
+    console.error('Error fetching posts for dashboard:', error);
+    res.status(500).send('Internal Server Error');
   }
 });
 
