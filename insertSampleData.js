@@ -4,7 +4,7 @@ const Post = require('./server/schema/Post');
 const Message = require('./server/schema/Messages');
 const Profile = require('./server/schema/profile'); 
 
-// MongoDB connection string - replace 'yourDatabaseName' with your actual database name
+// MongoDB connection string
 const dbURL = 'mongodb+srv://blabdue:iawynikd@blabdue.m4zqcqu.mongodb.net/test2'; 
 
 mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
