@@ -73,7 +73,7 @@ app.get('/profile', async (req, res) => {
   let userData; // Define userData variable outside the try block
 
     try {
-        // Assuming you have the user ID stored in the session
+        // user ID stored in the session
         const userId = req.session.user.id;
 
         // Query the database for the user's profile based on the user ID
@@ -118,7 +118,6 @@ app.get('/posts/:postID', (req, res) => {
 });
 
 // Route for the reviews page
-// Assuming you have a User model
 
 app.get('/reviews', async (req, res) => {
     try {
@@ -293,7 +292,6 @@ app.get('/posts', async (req, res) => {
 });
 
 //for posting comments
-// Assuming you are using Express
 app.post('/api/comments', async (req, res) => {
   try {
       const newComment = await Comment.create(req.body); // Assuming your comment model is named Comment
@@ -310,7 +308,7 @@ app.get('/dashboard', async (req, res) => {
     // Check if the user is logged in
     if (!req.session.user) {
       // Redirect to login if not logged in
-      return res.redirect('/login'); // Adjust the login route as needed
+      return res.redirect('/login'); 
     }
 
     // Fetch posts for the logged-in user
