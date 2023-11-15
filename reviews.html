@@ -13,8 +13,8 @@
         
 
         <!-- CSS Files -->
-        <link rel="stylesheet" href="/styles/general.css">
-        <link rel="stylesheet" href="/styles/reviews.css"/>
+        <link rel="stylesheet" href="styles/general.css">
+        <link rel="stylesheet" href="styles/reviews.css"/>
         
         <!-- Font Awesome for icons -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -44,12 +44,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="reviews.html"><i class="fas fa-star"></i> Reviews</a>
                             </li>
-                            <!-- <li class="nav-item">
-                                <a class="nav-link" href="forums.html"><i class="fas fa-comments"></i> Forums</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#startNewChat"><i class="fas fa-envelope"></i> Messages</a>
-                            </li> -->
                             <li class="nav-item">
                                 <a class="nav-link" href="index.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
                             </li>
@@ -67,25 +61,17 @@
             <div class="reviews-title"> Latest Reviews and Discussions </div>
 
             <div id="reviews-container">
-                <div class="user-container">
+                <div class="user-container" onclick="window.location='user-profile.html?userId=1';" style="cursor: pointer;">
 
-                    <a href="user-profile.html?userId=1" class="profile-link">
+                    <!-- <a href="user-profile.html?userId=1" class="profile-link"> -->
                         <div class="profile-container">
-                            <img class="profile-pic" src="/styles/images/profile1.jpg" alt="User 1">
+                            <img class="profile-pic" src="profiles/profile1.jpg" alt="User 1">
                             <div class="user-info">
                                 <span class="username"> Emily Anderson </span>
                             </div>
                         </div>
-                    </a>
+                    <!-- </a> -->
 
-                    <!-- <div class="profile-container">
-                        <img class="profile-pic" src="styles/images/profile1.jpg" alt="User 1">
-    
-                        <div class="user-info">
-                            <span class="username"> Emily Anderson </span>
-                        </div>
-                    </div> -->
-    
                     <div class="post-container">   
                         <div class="post-title">
                             <span class="title"> God of War: Ragnarok </span> 
@@ -123,23 +109,6 @@
                                             <div class="all-comments">
                                                 <div class="card">
                                                     <div class="bg-white p-2">
-                                                        <!-- <div class="d-flex flex-row user-info">
-                                                            <img class="rounded-circle" src="/styles/images/instadog.jpg" width="40">
-                        
-                                                            <div class="d-flex flex-column justify-content-start ml-2">
-                                                                <span class="d-block font-weight-bold name"> Francine Hallar </span>
-                                                                <span class="date text-black-50"> Shared publicly - Oct 2023 </span>
-                                                            </div>
-                                                        </div> -->
-                        
-                                                        <!-- <div class="mt-2">
-                                                            <p class="comment-text">
-                                                                I just finished playing 'God of War: Ragnarok,' and I have to say,
-                                                                it's an absolute masterpiece. The storyline, the combat mechanics, and
-                                                                the character development are top-notch. This game truly raises the bar for
-                                                                action-adventure titles!
-                                                            </p>
-                                                        </div> -->
                                                     </div>
                     
                                                     <div class="bg-white">
@@ -154,10 +123,6 @@
                                                                 <span class="ml-1 reply" id="reply">Comment</span>
                                                             </div>
                         
-                                                            <!-- <div class="like p-2 cursor">
-                                                                <i class="fa fa-share"></i>
-                                                                <span class="ml-1">Share</span>
-                                                            </div> -->
                                                         </div>
                                                     </div>
                                                 </div>      
@@ -170,9 +135,9 @@
                     </div>
                 </div>
     
-                <div class="user-container">
+                <div class="user-container" onclick="window.location='user-profile.html?userId=1';" style="cursor: pointer;">
                     <div class="profile-container">
-                        <img class="profile-pic" src="/styles/images/profile2.jpg" alt="User 2">
+                        <img class="profile-pic" src="profiles/profile2.jpg" alt="User 2">
     
                         <div class="user-info">
                             <span class="username"> Louis Litt </span>
@@ -217,22 +182,7 @@
                                             <div class="all-comments">
                                                 <div class="card">
                                                     <div class="bg-white p-2">
-                                                        <!-- <div class="d-flex flex-row user-info">
-                                                            <img class="rounded-circle" src="/styles/images/instadog.jpg" width="40">
-                        
-                                                            <div class="d-flex flex-column justify-content-start ml-2">
-                                                                <span class="d-block font-weight-bold name"> Letty Hong </span>
-                                                                <span class="date text-black-50"> Shared publicly - Oct 2023 </span>
-                                                            </div>
-                                                        </div>
-                        
-                                                        <div class="mt-2">
-                                                            <p class="comment-text">
-                                                                 I've been a fan of the 'Call of Duty' franchise for years, and the latest installment,
-                                                                'Call of Duty: Modern Warfare,' didn't disappoint. The graphics, the fast-paced action,
-                                                                and the thrilling multiplayer modes make it a must-play for any FPS enthusiast.
-                                                            </p>
-                                                        </div> -->
+                                                        
                                                     </div>
                     
                                                     <div class="bg-white">
@@ -247,10 +197,6 @@
                                                                 <span class="ml-1 reply" id="reply">Comment</span>
                                                             </div>
                         
-                                                            <!-- <div class="like p-2 cursor">
-                                                                <i class="fa fa-share"></i>
-                                                                <span class="ml-1">Share</span>
-                                                            </div> -->
                                                         </div>
                                                     </div>
                                                 </div>      
@@ -263,9 +209,9 @@
                     </div>
                 </div>
     
-                <div class="user-container">
+                <div class="user-container" onclick="window.location='user-profile.html?userId=1';" style="cursor: pointer;">
                     <div class="profile-container">
-                        <img class="profile-pic" src="/styles/images/profile3.jpg" alt="User 3">
+                        <img class="profile-pic" src="profiles/profile3.jpg" alt="User 3">
     
                         <div class="user-info">
                             <span class="username"> Kirk Lazarus </span>
@@ -311,22 +257,7 @@
                                             <div class="all-comments">
                                                 <div class="card">
                                                     <div class="bg-white p-2">
-                                                        <!-- <div class="d-flex flex-row user-info">
-                                                            <img class="rounded-circle" src="/styles/images/instadog.jpg" width="40">
-                        
-                                                            <div class="d-flex flex-column justify-content-start ml-2">
-                                                                <span class="d-block font-weight-bold name"> Keisha Trajano </span>
-                                                                <span class="date text-black-50"> Shared publicly - Oct 2023 </span>
-                                                            </div>
-                                                        </div>
-                        
-                                                        <div class="mt-2">
-                                                            <p class="comment-text">
-                                                                I just finished playing 'Uncharted 4,' and it was an absolute masterpiece.
-                                                                The storytelling, character development, and the breathtaking visuals made
-                                                                it an unforgettable experience. This game truly showcases the best of what the gaming industry has to offer.
-                                                            </p>
-                                                        </div> -->
+                                                        
                                                     </div>
                     
                                                     <div class="bg-white">
@@ -341,10 +272,7 @@
                                                                 <span class="ml-1 reply" id="reply">Comment</span>
                                                             </div>
                         
-                                                            <!-- <div class="like p-2 cursor">
-                                                                <i class="fa fa-share"></i>
-                                                                <span class="ml-1">Share</span>
-                                                            </div> -->
+                                                           
                                                         </div>
                                                     </div>
                                                 </div>      
@@ -357,9 +285,9 @@
                     </div>
                 </div>
     
-                <div class="user-container">
+                <div class="user-container" onclick="window.location='user-profile.html?userId=1';" style="cursor: pointer;">
                     <div class="profile-container">
-                        <img class="profile-pic" src="/styles/images/profile4.jpg" alt="User 4">
+                        <img class="profile-pic" src="profiles/profile4.jpg" alt="User 4">
     
                         <div class="user-info">
                             <span class="username"> Wednesday Addams </span>
@@ -403,22 +331,6 @@
                                             <div class="all-comments">
                                                 <div class="card">
                                                     <div class="bg-white p-2">
-                                                        <!-- <div class="d-flex flex-row user-info">
-                                                            <img class="rounded-circle" src="/styles/images/instadog.jpg" width="40">
-                        
-                                                            <div class="d-flex flex-column justify-content-start ml-2">
-                                                                <span class="d-block font-weight-bold name"> Josh Villavicencio </span>
-                                                                <span class="date text-black-50"> Shared publicly - Oct 2023 </span>
-                                                            </div>
-                                                        </div>
-                        
-                                                        <div class="mt-2">
-                                                            <p class="comment-text">
-                                                                I finally got my hands on 'Resident Evil Village,' and it's a fantastic addition
-                                                                to the series. The survival horror elements, the village setting, and
-                                                                the mysterious tall lady all added to the overall creepiness. Capcom did a great job!
-                                                            </p>
-                                                        </div> -->
                                                     </div>
                     
                                                     <div class="bg-white">
@@ -433,10 +345,6 @@
                                                                 <span class="ml-1 reply" id="reply">Comment</span>
                                                             </div>
                         
-                                                            <!-- <div class="like p-2 cursor">
-                                                                <i class="fa fa-share"></i>
-                                                                <span class="ml-1">Share</span>
-                                                            </div> -->
                                                         </div>
                                                     </div>
                                                 </div>      
@@ -449,9 +357,9 @@
                     </div>
                 </div>
     
-                <div class="user-container">
+                <div class="user-container" onclick="window.location='user-profile.html?userId=1';" style="cursor: pointer;">
                     <div class="profile-container">
-                        <img class="profile-pic" src="/styles/images/profile5.jpg" alt="User 5">
+                        <img class="profile-pic" src="profiles/profile5.jpg" alt="User 5">
     
                         <div class="user-info">
                             <span class="username"> Harry Potter </span>
@@ -497,22 +405,7 @@
                                             <div class="all-comments">
                                                 <div class="card">
                                                     <div class="bg-white p-2">
-                                                        <!-- <div class="d-flex flex-row user-info">
-                                                            <img class="rounded-circle" src="/styles/images/instadog.jpg" width="40">
-                        
-                                                            <div class="d-flex flex-column justify-content-start ml-2">
-                                                                <span class="d-block font-weight-bold name"> Keisha Trajano </span>
-                                                                <span class="date text-black-50"> Shared publicly - Oct 2023 </span>
-                                                            </div>
-                                                        </div>
-                        
-                                                        <div class="mt-2">
-                                                            <p class="comment-text">
-                                                                Just started playing 'Hogwarts Legacy,' and I'm already loving the magical world they've created.
-                                                                The attention to detail, the freedom to explore Hogwarts, and the immersive story have exceeded
-                                                                my expectations. I'm excited to see where my character's journey takes me.
-                                                            </p>
-                                                        </div> -->
+                                                        
                                                     </div>
                     
                                                     <div class="bg-white">
@@ -527,10 +420,7 @@
                                                                 <span class="ml-1 reply" id="reply">Comment</span>
                                                             </div>
                         
-                                                            <!-- <div class="like p-2 cursor">
-                                                                <i class="fa fa-share"></i>
-                                                                <span class="ml-1">Share</span>
-                                                            </div> -->
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>      
@@ -544,21 +434,6 @@
                 </div>
             </div>
             </div>
-            
-
-        <!--<div class="footer-container">
-            <ul class="footer-links">
-                <li><a href="#"> Privacy Policy </a></li>
-                <li><a href="#"> Terms of Service </a></li>
-                <li><a href="#"> Contact Us </a></li>
-                <li><a href="#"> About Us </a></li>
-            </ul>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>-->
         
         <!-- Bootstrap JavaScript and jQuery -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
