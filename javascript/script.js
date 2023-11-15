@@ -70,33 +70,63 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Login
 document.addEventListener('DOMContentLoaded', function () {
+    console.log('DOMContentLoaded event fired'); // Add this line
     const loginForm = document.getElementById('login-form');
 
-    loginForm.addEventListener('submit', function (event) {
+    loginForm.addEventListener('submit', async function (event) {
         event.preventDefault(); // Preventing the form from submitting by default
+        console.log('Form submitted'); // Add this line
 
         // User input values
-        const usernameOrEmail = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
         // User validation, checks for non-empty fields
-        if (!usernameOrEmail || !password) {
+        if (!email || !password) {
             alert('Please fill in all fields.');
             return; // If field is empty, prevents from submission
         }
 
         // If user validation is a success, send the data to the server for further processing
         const userData = {
-            usernameOrEmail: usernameOrEmail,
+            email: email,
             password: password,
         };
 
-        // Simulate sending data to the server for authentication, must replace with actual server interaction
-        console.log('User data to be sent to the server for login:', userData);
-
-        // Clear the form or redirect user to a dashboard
-        loginForm.reset(); // Clearing of form fields
-    });
+        try {
+            const response = await fetch('http://localhost:3000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userData),
+            });
+        
+            if (response.ok) {
+                const responseData = await response.json();
+                
+                // Check the message in the response for success
+                if (responseData.message === 'Login successful') {
+                    // If login is successful, redirect the user to the dashboard
+                    window.location.href = '/dashboard';
+                } else {
+                    // Handle unexpected success response
+                    alert('Unexpected success response. Please try again.');
+                }
+            } else {
+                // Handle login failure
+                const errorData = await response.json();
+                if (errorData.error) {
+                    alert(`Login failed: ${errorData.error}`);
+                } else {
+                    alert('Login failed. Please check your email and password and try again.');
+                }
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred while processing your request. Please try again later.');
+        } 
+    });       
 });
 
 /*************************************************************/

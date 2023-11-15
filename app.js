@@ -97,12 +97,6 @@ app.get('/login', (req, res) => {
   res.render('login');
 });
 
-// Route for handling the login form submission (POST request)
-app.post('/login', (req, res) => {
-  const username = req.body.username;
-  const password = req.body.password;
-});
-
 // Define a route for displaying the sign-up form (GET request)
 app.get('/signup', (req, res) => {
   res.render('signup'); 
@@ -122,6 +116,45 @@ mongoose.connect('mongodb+srv://blabdue:iawynikd@blabdue.m4zqcqu.mongodb.net/tes
 }).catch(err => {
   console.error('MongoDB connection error:', err);
 });
+
+/******************************* */
+app.post('/test', async (req, res) => {
+  console.log('Test route accessed');
+  res.status(200).send('Test response');
+});
+
+app.post('/login', async (req, res) => {
+  const { username, email, password } = req.body;
+  const check = await User.findOne({ email: email});
+  console.log('User found:', check);
+
+  try {
+      const check = await User.findOne({ email: email});
+
+      if (!check) {
+          console.log('User not found');
+          return res.status(400).json({ error: 'User not found' });
+      }
+
+      const isPasswordValid = await bcrypt.compare(password, check.password);
+
+      if (isPasswordValid) {
+          console.log('Login successful!');
+          res.status(200).json({ message: 'Login successful' });
+      } else {
+          console.log('Incorrect password');
+          res.status(400).json({ error: 'Incorrect password' });
+      }
+  } catch (error) {
+      console.error('Error in login:', error);
+      res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
+
+
+/***************************************/
 
 app.post('/signup', async (req, res) => {
   try {
