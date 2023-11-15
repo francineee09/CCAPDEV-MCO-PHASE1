@@ -9,6 +9,7 @@ const bcrypt = require('bcryptjs');
 const Post = require('./server/schema/Post');
 const multer = require('multer');
 const Message = require('./server/schema/Messages');
+const Comment = require('./server/schema/Comments'); // Adjust the path accordingly
 
 app.use(express.static(path.join(__dirname)));
 
@@ -237,12 +238,14 @@ app.get('/posts', async (req, res) => {
 });
 
 //for posting comments
+// Assuming you are using Express
 app.post('/api/comments', async (req, res) => {
   try {
-    const newComment = new Comment(req.body); // Assuming the request body contains the necessary data
-    const savedComment = await newComment.save();
-    res.status(201).json(savedComment);
+      const newComment = await Comment.create(req.body); // Assuming your comment model is named Comment
+      res.status(201).json(newComment);
   } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
+      console.error('Error adding comment:', error);
+      res.status(500).send('Internal Server Error');
   }
 });
+

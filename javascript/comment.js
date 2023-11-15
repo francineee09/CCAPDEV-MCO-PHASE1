@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function addReply(text, postId) {
         let div = document.createElement("div");
         div.setAttribute("class", "all-comment");
-
+    
         div.innerHTML += `<div class="card bg-white p-2">
                               <div class="d-flex flex-row user-info">
                                   <img class="rounded-circle" src="/styles/images/purinpost.jpg" width="40">
@@ -39,45 +39,66 @@ document.addEventListener("DOMContentLoaded", function () {
                                   </div>
                                   <div class="like p-2 cursor">
                                       <i class="fa fa-commenting-o"></i>
-                                      <span class="ml-1 reply">Comment</span>
+                                      <span class="ml-1 reply" data-postId="${postId}">Comment</span>
                                   </div>
                               </div>
                           </div>`;
         return div;
     }
+    
+    
 
     // Event listener for handling comments and replies
     document.body.addEventListener("click", function (e) {
         const target = e.target;
-
+    
         // Handle the "Add Reply" click
         if (target.classList.contains("reply")) {
             const closestBox = target.closest(".comment-box");
-            const postId = closestBox.dataset.postId;
+            const postId = closestBox.dataset.postId || target.dataset.postId;
             const closestCard = target.closest(".card");
             closestCard.appendChild(createInputBox(postId));
         }
-
+    
         // Handle the "Submit" click
         if (target.classList.contains("submit")) {
             const commentDetails = target.closest(".comment-details");
             const postId = commentDetails.dataset.postId;
             const closestCard = target.closest(".card");
-
+    
             // Log the value of the textarea to the console for debugging
-            const textareaValue = commentDetails.querySelector(".comment-details .textarea").value.trim();
-
+            const textareaValue = commentDetails.querySelector(".textarea").value.trim();
+    
             if (textareaValue !== "") {
-                closestCard.appendChild(addReply(textareaValue, postId));
-                commentDetails.remove();
+                // Adjust the URL and token based on your server implementation
+                fetch('/api/comments', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        //'Authorization': `Bearer ${token}`,  // Include your authentication token if needed
+                    },
+                    body: JSON.stringify({
+                        content: textareaValue,
+                        comment_date: new Date(),
+                        replies: [],
+                        main_comment: postId,  // Use postId as the main_comment value
+                        likes: 0,
+                    }),
+                }).then(response => response.json())
+                .then(data => {
+                    console.log('New comment added:', data);
+                    closestCard.appendChild(addReply(textareaValue, postId));
+                    commentDetails.remove();
+                }).catch(error => console.error('Error adding new comment:', error));
             }
         }
-
+    
         if (target.classList.contains("cancel")) {
             const commentDetails = target.closest(".comment-details");
             commentDetails.remove();
         }
     });
+    
 
     // Function to get the formatted date
     function getFormattedDate() {

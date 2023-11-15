@@ -10,7 +10,6 @@
         <!-- Link to Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        
 
         <!-- CSS Files -->
         <link rel="stylesheet" href="styles/general.css">
@@ -44,6 +43,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="reviews.html"><i class="fas fa-star"></i> Reviews</a>
                             </li>
+                            <!-- <li class="nav-item">
+                                <a class="nav-link" href="forums.html"><i class="fas fa-comments"></i> Forums</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#startNewChat"><i class="fas fa-envelope"></i> Messages</a>
+                            </li> -->
                             <li class="nav-item">
                                 <a class="nav-link" href="index.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
                             </li>
@@ -60,57 +65,70 @@
         <div class="latest-content">
             <div class="reviews-title"> Latest Reviews and Discussions </div>
 
-            <div id="reviews-container">
-                <div class="user-container" onclick="window.location='user-profile.html?userId=1';" style="cursor: pointer;">
+            <div class="user-container">
+                <div class="profile-container">
+                    <img class="profile-pic" src="styles/images/profile1.jpg" alt="User 1">
 
-                    <!-- <a href="user-profile.html?userId=1" class="profile-link"> -->
-                        <div class="profile-container">
-                            <img class="profile-pic" src="profiles/profile1.jpg" alt="User 1">
-                            <div class="user-info">
-                                <span class="username"> Emily Anderson </span>
-                            </div>
-                        </div>
-                    <!-- </a> -->
+                    <div class="user-info">
+                        <span class="username"> Emily Anderson </span>
+                    </div>
+                </div>
 
-                    <div class="post-container">   
-                        <div class="post-title">
-                            <span class="title"> God of War: Ragnarok </span> 
-                        </div>
-                        <span class="post-date">Feb 14, 2023</span>
-                            
-                        <div class="post-pic">
-                            <img class="game-pic" src="/styles/images/post1.jpg" alt="Post 1 Image">
-                        </div>
+                <div class="post-container">   
+                    <div class="post-title">
+                        <span class="title"> God of War: Ragnarok </span> 
                     </div>
-    
-                    <div class="post-info-container" data-game="gow">
-                        <div class="post-content">
-                            <p> 
-                                This is an amazing game! I just finished playing it, and I highly recommend it to everyone.
-                                The new weapons are fun and it doesn't force them down your throat.
-                                <span class="dots">...</span>
-                                <span class="more">
-                                    There are times that you just use them and just might find them entertaining,
-                                    but it never takes the chaos blades from you. The upgrades are great. 
-                                    I find that the system is not overly confusing, there are plenty of options
-                                    and possible amazing styles to suit you.
-                                </span>
-                            </p>
-                            <a onclick="myFunction('gow')" class="myBtn"> Read more </a>
-                        </div>
+                        
+                    <div class="post-pic">
+                        <img class="game-pic" src="styles/images/post1.jpg" alt="Post 1 Image">
                     </div>
-    
-                    <div class="comment-box" data-post-id="post1">
-                        <div class="container mt-5">
-                            <div class="d-flex justify-content-center row">
-                                <div class="col-md-8">
-                                    <div class="d-flex flex-column comment-section">
-                                        <div id="comment-container-post1" class="comment-container">
-                                            <div class="all-comments">
-                                                <div class="card">
-                                                    <div class="bg-white p-2">
-                                                    </div>
+                </div>
+
+                <div class="post-info-container" data-game="gow">
+                    <div class="post-content">
+                        <p> 
+                            This is an amazing game! I just finished playing it, and I highly recommend it to everyone.
+                            The new weapons are fun and it doesn't force them down your throat.
+                            <span class="dots">...</span>
+                            <span class="more">
+                                There are times that you just use them and just might find them entertaining,
+                                but it never takes the chaos blades from you. The upgrades are great. 
+                                I find that the system is not overly confusing, there are plenty of options
+                                and possible amazing styles to suit you.
+                            </span>
+                        </p>
+                        <a onclick="myFunction('gow')" class="myBtn"> Read more </a>
+                    </div>
+                </div>
+                
+
+                <div class="comment-box">
+                    <div class="container mt-5">
+                        <div class="d-flex justify-content-center row">
+                            <div class="col-md-8">
+                                <div class="d-flex flex-column comment-section">
+                                    <div id="comment-container" class="comment-container">
+                                        <div class="all-comments">
+                                            <div class="card">
+                                                <div class="bg-white p-2">
+                                                    <!-- <div class="d-flex flex-row user-info">
+                                                        <img class="rounded-circle" src="/styles/images/instadog.jpg" width="40">
                     
+                                                        <div class="d-flex flex-column justify-content-start ml-2">
+                                                            <span class="d-block font-weight-bold name"> Francine Hallar </span>
+                                                            <span class="date text-black-50"> Shared publicly - Oct 2023 </span>
+                                                        </div>
+                                                    </div> -->
+                    
+                                                    <!-- <div class="mt-2">
+                                                        <p class="comment-text">
+                                                            I just finished playing 'God of War: Ragnarok,' and I have to say,
+                                                            it's an absolute masterpiece. The storyline, the combat mechanics, and
+                                                            the character development are top-notch. This game truly raises the bar for
+                                                            action-adventure titles!
+                                                        </p>
+                                                    </div> -->
+
                                                     <div class="bg-white">
                                                         <div class="d-flex flex-row fs-12">
                                                             <div class="like p-2 cursor">
@@ -123,309 +141,215 @@
                                                                 <span class="ml-1 reply" id="reply">Comment</span>
                                                             </div>
                         
+                                                            <div class="like p-2 cursor">
+                                                                <i class="fa fa-share"></i>
+                                                                <span class="ml-1">Share</span>
+                                                            </div>
                                                         </div>
+
                                                     </div>
-                                                </div>      
+
+                                                </div>
+                
+                                               
                                             </div>
-                                        </div>                                    
+                                            
+                                        </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-    
-                <div class="user-container" onclick="window.location='user-profile.html?userId=1';" style="cursor: pointer;">
-                    <div class="profile-container">
-                        <img class="profile-pic" src="profiles/profile2.jpg" alt="User 2">
-    
-                        <div class="user-info">
-                            <span class="username"> Louis Litt </span>
-                        </div>
+            </div>
+
+            <div class="user-container">
+                <div class="profile-container">
+                    <img class="profile-pic" src="styles/images/profile2.jpg" alt="User 2">
+
+                    <div class="user-info">
+                        <span class="username"> Louis Litt </span>
                     </div>
-    
-                    <div class="post-container">
-                        <div class="post-title">
-                            <span class="title"> CALL OF DUTY!!!</span> 
-                        </div>
-                        <span class="post-date">Mar 21, 2023</span>
-                        
-                        <div class="post-pic">
-                            <img class="game-pic" src="/styles/images/post2.jpg" alt="Post 2 Image">
-                        </div>
+                </div>
+
+                <div class="post-container">
+                    <div class="post-title">
+                        <span class="title"> CALL OF DUTY!!!</span> 
                     </div>
-    
-                    <div class="post-info-container" data-game="cod">
-                        <div class="post-content">
-                            <p>
-                                Ladies and gentlemen, "Call of Duty" is the courtroom drama of the gaming world,
-                                delivering graphics as sharp as a lawyer's wit, sound that hits like an unexpected
-                                <span class="dots">...</span>
-                                <span class="more">
-                                    objection, and action faster than a plea deal negotiation. But beware the occasional
-                                    spawn system mishaps and camping enthusiasts. In the end, it's a rollercoaster of
-                                    adrenaline, offering both the thrill of victory and the agony of defeat. So, if
-                                    you're in the mood for virtual warfare and a few laughs, enlist in this gaming
-                                    courtroom. Case closed!
-                                </span>
-                            </p>
-                            <a onclick="myFunction('cod')" class="myBtn"> Read more </a>
-                        </div>
-                    </div>
-    
-                    <div class="comment-box" data-post-id="post2">
-                        <div class="container mt-5">
-                            <div class="d-flex justify-content-center row">
-                                <div class="col-md-8">
-                                    <div class="d-flex flex-column comment-section">
-                                        <div id="comment-container-post2" class="comment-container">
-                                            <div class="all-comments">
-                                                <div class="card">
-                                                    <div class="bg-white p-2">
-                                                        
-                                                    </div>
                     
-                                                    <div class="bg-white">
-                                                        <div class="d-flex flex-row fs-12">
-                                                            <div class="like p-2 cursor">
-                                                                <i class="fa fa-thumbs-o-up"></i>
-                                                                <span class="ml-1">Like</span>
-                                                            </div>
-                        
-                                                            <div class="like p-2 cursor">
-                                                                <i class="fa fa-commenting-o"></i>
-                                                                <span class="ml-1 reply" id="reply">Comment</span>
-                                                            </div>
-                        
+                    <div class="post-pic">
+                        <img class="game-pic" src="styles/images/post2.jpg" alt="Post 2 Image">
+                    </div>
+                </div>
+
+                <div class="post-info-container" data-game="cod">
+                    <div class="post-content">
+                        <p>
+                            Ladies and gentlemen, "Call of Duty" is the courtroom drama of the gaming world,
+                            delivering graphics as sharp as a lawyer's wit, sound that hits like an unexpected
+                            <span class="dots">...</span>
+                            <span class="more">
+                                objection, and action faster than a plea deal negotiation. But beware the occasional
+                                spawn system mishaps and camping enthusiasts. In the end, it's a rollercoaster of
+                                adrenaline, offering both the thrill of victory and the agony of defeat. So, if
+                                you're in the mood for virtual warfare and a few laughs, enlist in this gaming
+                                courtroom. Case closed!
+                            </span>
+                        </p>
+                        <a onclick="myFunction('cod')" class="myBtn"> Read more </a>
+                    </div>
+                </div>
+
+                <div class="comment-box">
+                    <div class="container mt-5">
+                        <div class="d-flex justify-content-center row">
+                            <div class="col-md-8">
+                                <div class="d-flex flex-column comment-section">
+                                    <div id="comment-container" class="comment-container">
+                                        <div class="all-comments">
+                                            <div class="card">
+                                                <div class="bg-white p-2">
+                                                    <div class="d-flex flex-row user-info">
+                                                        <img class="rounded-circle" src="/styles/images/instadog.jpg" width="40">
+                    
+                                                        <div class="d-flex flex-column justify-content-start ml-2">
+                                                            <span class="d-block font-weight-bold name"> Francine Hallar </span>
+                                                            <span class="date text-black-50"> Shared publicly - Oct 2023 </span>
                                                         </div>
                                                     </div>
-                                                </div>      
+                    
+                                                    <div class="mt-2">
+                                                        <p class="comment-text">
+                                                            I just finished playing 'God of War: Ragnarok,' and I have to say,
+                                                            it's an absolute masterpiece. The storyline, the combat mechanics, and
+                                                            the character development are top-notch. This game truly raises the bar for
+                                                            action-adventure titles!
+                                                        </p>
+                                                    </div>
+                                                </div>
+                
+                                                <div class="bg-white">
+                                                    <div class="d-flex flex-row fs-12">
+                                                        <div class="like p-2 cursor">
+                                                            <i class="fa fa-thumbs-o-up"></i>
+                                                            <span class="ml-1">Like</span>
+                                                        </div>
+                    
+                                                        <div class="like p-2 cursor">
+                                                            <i class="fa fa-commenting-o"></i>
+                                                            <span class="ml-1 reply" id="reply">Comment</span>
+                                                        </div>
+                    
+                                                        <div class="like p-2 cursor">
+                                                            <i class="fa fa-share"></i>
+                                                            <span class="ml-1">Share</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>                                    
+                                            
+                                        </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-    
-                <div class="user-container" onclick="window.location='user-profile.html?userId=1';" style="cursor: pointer;">
-                    <div class="profile-container">
-                        <img class="profile-pic" src="profiles/profile3.jpg" alt="User 3">
-    
-                        <div class="user-info">
-                            <span class="username"> Kirk Lazarus </span>
-                        </div>
-                    </div>
-    
-                    <div class="post-container">
-                        <div class="post-title">
-                            <span class="title"> Uncharted 4 </span> 
-                        </div>
-                        <span class="post-date">Aug 08, 2023</span>
-                        
-                        <div class="post-pic">
-                            <img class="game-pic" src="/styles/images/post3.jpg" alt="Post 3 Image">
-                        </div>
-                    </div>
-    
-                    <div class="post-info-container" data-game="uncharted">
-                        <div class="post-content">
-                            <p>
-                                Ladies and gentlemen, if I, Kirk Lazarus, were to review a game, it'd be like comparing method
-                                acting to a thumb war with a kitten. Now, imagine "The Witcher 3" meets "Grand Theft Auto," sprinkled with the drama
-                                <span class="dots"> ... </span>
-                                <span class="more">
-                                    of a Shakespearean monologue -- that's what we've got here. You'll play more
-                                    characters than I've played roles, and the adventure is as wild as my method
-                                    transformations. But remember, in this game, there's no "cut" button, so don't
-                                    be surprised if you find yourself talking to NPCs longer than you've ever talked
-                                    to your therapist. It's a five-star masterpiece, darling, but it won't help you
-                                    with your method acting.
-                                </span>
-                            </p>
-                            <a onclick="myFunction('uncharted')" class="myBtn">Read more</a>
-                        </div>
-                    </div>
-    
-                    <div class="comment-box" data-post-id="post3">
-                        <div class="container mt-5">
-                            <div class="d-flex justify-content-center row">
-                                <div class="col-md-8">
-                                    <div class="d-flex flex-column comment-section">
-                                        <div id="comment-container-post3" class="comment-container">
-                                            <div class="all-comments">
-                                                <div class="card">
-                                                    <div class="bg-white p-2">
-                                                        
-                                                    </div>
-                    
-                                                    <div class="bg-white">
-                                                        <div class="d-flex flex-row fs-12">
-                                                            <div class="like p-2 cursor">
-                                                                <i class="fa fa-thumbs-o-up"></i>
-                                                                <span class="ml-1">Like</span>
-                                                            </div>
-                        
-                                                            <div class="like p-2 cursor">
-                                                                <i class="fa fa-commenting-o"></i>
-                                                                <span class="ml-1 reply" id="reply">Comment</span>
-                                                            </div>
-                        
-                                                           
-                                                        </div>
-                                                    </div>
-                                                </div>      
-                                            </div>
-                                        </div>                                    
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            </div>
+
+            <div class="user-container">
+                <div class="profile-container">
+                    <img class="profile-pic" src="styles/images/profile3.jpg" alt="User 3">
+
+                    <div class="user-info">
+                        <span class="username"> Kirk Lazarus </span>
                     </div>
                 </div>
-    
-                <div class="user-container" onclick="window.location='user-profile.html?userId=1';" style="cursor: pointer;">
-                    <div class="profile-container">
-                        <img class="profile-pic" src="profiles/profile4.jpg" alt="User 4">
-    
-                        <div class="user-info">
-                            <span class="username"> Wednesday Addams </span>
-                        </div>
+
+                <div class="post-container">
+                    <div class="post-title">
+                        <span class="title"> Uncharted 4 </span> 
                     </div>
-    
-                    <div class="post-container">
-                        <div class="post-title">
-                            <span class="title"> Resident Evil 😈</span> 
-                        </div>
-                        <span class="post-date">Nov 15, 2023</span>
-                        
-                        <div class="post-pic">
-                            <img class="game-pic" src="/styles/images/post4.jpg" alt="Post 4 Image">
-                        </div>
-                    </div>
-    
-                    <div class="post-info-container" data-game="rv">
-                        <div class="post-content">
-                            <p>
-                                Playing Resident Evil felt like a delightful family reunion,
-                                where grotesque monstrosities and chilling corridors welcomed me with open arms.
-                                <span class="dots"> ... </span>
-                                <span class="more">
-                                    The eerie ambiance and spine-tingling suspense were as comforting as Uncle Fester's
-                                    lightbulb tricks. But beware, it's not for the faint of heart; this game will
-                                    have you questioning your sanity faster than you can say "Thing."
-                                    I felt right at home amidst the zombies and ghastly surprises, and it's a
-                                    perfect addition to our charmingly macabre household.
-                                </span>
-                            </p>
-                            <a onclick="myFunction('rv')" class="myBtn">Read more</a>
-                        </div>
-                    </div>
-                    <div class="comment-box" data-post-id="post4">
-                        <div class="container mt-5">
-                            <div class="d-flex justify-content-center row">
-                                <div class="col-md-8">
-                                    <div class="d-flex flex-column comment-section">
-                                        <div id="comment-container-post4" class="comment-container">
-                                            <div class="all-comments">
-                                                <div class="card">
-                                                    <div class="bg-white p-2">
-                                                    </div>
                     
-                                                    <div class="bg-white">
-                                                        <div class="d-flex flex-row fs-12">
-                                                            <div class="like p-2 cursor">
-                                                                <i class="fa fa-thumbs-o-up"></i>
-                                                                <span class="ml-1">Like</span>
-                                                            </div>
-                        
-                                                            <div class="like p-2 cursor">
-                                                                <i class="fa fa-commenting-o"></i>
-                                                                <span class="ml-1 reply" id="reply">Comment</span>
-                                                            </div>
-                        
-                                                        </div>
-                                                    </div>
-                                                </div>      
-                                            </div>
-                                        </div>                                    
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="post-pic">
+                        <img class="game-pic" src="styles/images/post3.jpg" alt="Post 3 Image">
                     </div>
                 </div>
-    
-                <div class="user-container" onclick="window.location='user-profile.html?userId=1';" style="cursor: pointer;">
-                    <div class="profile-container">
-                        <img class="profile-pic" src="profiles/profile5.jpg" alt="User 5">
-    
-                        <div class="user-info">
-                            <span class="username"> Harry Potter </span>
-                        </div>
+
+                <div class="post-info-container" data-game="uncharted">
+                    <div class="post-content">
+                        <p>
+                            Ladies and gentlemen, if I, Kirk Lazarus, were to review a game, it'd be like comparing method
+                            acting to a thumb war with a kitten. Now, imagine "The Witcher 3" meets "Grand Theft Auto," sprinkled with the drama
+                            <span class="dots"> ... </span>
+                            <span class="more">
+                                of a Shakespearean monologue -- that's what we've got here. You'll play more
+                                characters than I've played roles, and the adventure is as wild as my method
+                                transformations. But remember, in this game, there's no "cut" button, so don't
+                                be surprised if you find yourself talking to NPCs longer than you've ever talked
+                                to your therapist. It's a five-star masterpiece, darling, but it won't help you
+                                with your method acting.
+                            </span>
+                        </p>
+                        <a onclick="myFunction('uncharted')" class="myBtn">Read more</a>
                     </div>
-    
-                    <div class="post-container">
-                        <div class="post-title">
-                            <span class="title"> Hogwarts Legacy! </span> 
-                        </div>
-                        <span class="post-date">Nov 14, 2023</span>
-                        
-                        <div class="post-pic">
-                            <img class="game-pic" src="/styles/images/post5.jpg" alt="Post 5 Image">
-                        </div>
-                    </div>
-    
-                    <div class="post-info-container" data-game="hl">
-                        <div class="post-content">
-                            <p>
-                                I must say, playing Hogwarts Legacy was like revisiting my alma mater,
-                                Hogwarts, in a different era, and it felt magical in every sense.
-                                The ability to explore the enchanting castle and its surroundings in the 1800s,
-                                <span class="dots"> ... </span>
-                                <span class="more">
-                                    while uncovering ancient secrets, truly made me feel like I was reliving my own history.
-                                    The spells, potions, and fantastic creatures transported me back to my own adventures,
-                                    and the freedom to shape my wizarding destiny was a captivating experience.
-                                    It's a game that lets you write your own chapter in the magical world, and for that,
-                                    it's a spellbinding journey worth embarking upon. Accio fun!
-                                </span>
-                            </p>
-                            <a onclick="myFunction('hl')" class="myBtn">Read more</a>
-                        </div>
-                    </div>
-    
-                    <div class="comment-box" data-post-id="post5">
-                        <div class="container mt-5">
-                            <div class="d-flex justify-content-center row">
-                                <div class="col-md-8">
-                                    <div class="d-flex flex-column comment-section">
-                                        <div id="comment-container-post5" class="comment-container">
-                                            <div class="all-comments">
-                                                <div class="card">
-                                                    <div class="bg-white p-2">
-                                                        
-                                                    </div>
-                    
-                                                    <div class="bg-white">
-                                                        <div class="d-flex flex-row fs-12">
-                                                            <div class="like p-2 cursor">
-                                                                <i class="fa fa-thumbs-o-up"></i>
-                                                                <span class="ml-1">Like</span>
-                                                            </div>
-                        
-                                                            <div class="like p-2 cursor">
-                                                                <i class="fa fa-commenting-o"></i>
-                                                                <span class="ml-1 reply" id="reply">Comment</span>
-                                                            </div>
-                        
-                                                            
-                                                        </div>
-                                                    </div>
-                                                </div>      
+                </div>
+
+                <div class="comment-box">
+                    <div class="container mt-5">
+                        <div class="d-flex justify-content-center row">
+                            <div class="col-md-8">
+                                <div class="d-flex flex-column comment-section" id="comment-container">
+                                    <div class="bg-white p-2">
+                                        <div class="d-flex flex-row user-info">
+                                            <img class="rounded-circle" src="/styles/images/purinpost.jpg" width="40">
+
+                                            <div class="d-flex flex-column justify-content-start ml-2">
+                                                <span class="d-block font-weight-bold name"> Keisha Trajano </span>
+                                                <span class="date text-black-50"> Shared publicly - Oct 2023 </span>
                                             </div>
-                                        </div>                                    
+                                        </div>
+
+                                        <div class="mt-2">
+                                            <p class="comment-text">
+                                                I just finished playing 'Uncharted 4,' and it was an absolute masterpiece.
+                                                The storytelling, character development, and the breathtaking visuals made
+                                                it an unforgettable experience. This game truly showcases the best of what the gaming industry has to offer.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-white">
+                                        <div class="d-flex flex-row fs-12">
+                                            <div class="like p-2 cursor">
+                                                <i class="fa fa-thumbs-o-up"></i>
+                                                <span class="ml-1">Like</span>
+                                            </div>
+
+                                            <div class="like p-2 cursor">
+                                                <i class="fa fa-commenting-o"></i>
+                                                <span class="ml-1">Comment</span>
+                                            </div>
+
+                                            <div class="like p-2 cursor">
+                                                <i class="fa fa-share"></i>
+                                                <span class="ml-1">Share</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-light p-2">
+                                        <div class="d-flex flex-row align-items-start">
+                                            <img class="rounded-circle" src="/styles/images/purinpost.jpg" width="40">
+                                            <textarea class="form-control ml-1 shadow-none textarea"></textarea>
+                                        </div>
+
+                                        <div class="mt-2 text-right">
+                                            <button id="comment-btn" class="btn btn-primary btn-sm shadow-none" type="button">Post comment </button>
+                                            <button id="cancel-btn" class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -433,7 +357,218 @@
                     </div>
                 </div>
             </div>
+
+            <div class="user-container">
+                <div class="profile-container">
+                    <img class="profile-pic" src="styles/images/profile4.jpg" alt="User 4">
+
+                    <div class="user-info">
+                        <span class="username"> Wednesday Addams </span>
+                    </div>
+                </div>
+
+                <div class="post-container">
+                    <div class="post-title">
+                        <span class="title"> Resident Evil 😈</span> 
+                    </div>
+                    
+                    <div class="post-pic">
+                        <img class="game-pic" src="styles/images/post4.jpg" alt="Post 4 Image">
+                    </div>
+                </div>
+
+                <div class="post-info-container" data-game="rv">
+                    <div class="post-content">
+                        <p>
+                            Playing Resident Evil felt like a delightful family reunion,
+                            where grotesque monstrosities and chilling corridors welcomed me with open arms.
+                            <span class="dots"> ... </span>
+                            <span class="more">
+                                The eerie ambiance and spine-tingling suspense were as comforting as Uncle Fester's
+                                lightbulb tricks. But beware, it's not for the faint of heart; this game will
+                                have you questioning your sanity faster than you can say "Thing."
+                                I felt right at home amidst the zombies and ghastly surprises, and it's a
+                                perfect addition to our charmingly macabre household.
+                            </span>
+                        </p>
+                        <a onclick="myFunction('rv')" class="myBtn">Read more</a>
+                    </div>
+                </div>
+
+                <div class="comment-box">
+                    <div class="container mt-5">
+                        <div class="d-flex justify-content-center row">
+                            <div class="col-md-8">
+                                <div class="d-flex flex-column comment-section">
+                                    <div class="bg-white p-2">
+                                        <div class="d-flex flex-row user-info">
+                                            <img class="rounded-circle" src="/styles/images/instadog.jpg" width="40">
+
+                                            <div class="d-flex flex-column justify-content-start ml-2">
+                                                <span class="d-block font-weight-bold name"> Josh Villavicencio </span>
+                                                <span class="date text-black-50"> Shared publicly - Oct 2023 </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-2">
+                                            <p class="comment-text">
+                                                I finally got my hands on 'Resident Evil Village,' and it's a fantastic addition
+                                                to the series. The survival horror elements, the village setting, and
+                                                the mysterious tall lady all added to the overall creepiness. Capcom did a great job!
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-white">
+                                        <div class="d-flex flex-row fs-12">
+                                            <div class="like p-2 cursor">
+                                                <i class="fa fa-thumbs-o-up"></i>
+                                                <span class="ml-1">Like</span>
+                                            </div>
+
+                                            <div class="like p-2 cursor">
+                                                <i class="fa fa-commenting-o"></i>
+                                                <span class="ml-1">Comment</span>
+                                            </div>
+
+                                            <div class="like p-2 cursor">
+                                                <i class="fa fa-share"></i>
+                                                <span class="ml-1">Share</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-light p-2">
+                                        <div class="d-flex flex-row align-items-start">
+                                            <img class="rounded-circle" src="/styles/images/purinpost.jpg" width="40">
+                                            <textarea class="form-control ml-1 shadow-none textarea"></textarea>
+                                        </div>
+
+                                        <div class="mt-2 text-right">
+                                            <button id="comment-btn" class="btn btn-primary btn-sm shadow-none" type="button">Post comment </button>
+                                            <button id="cancel-btn" class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <div class="user-container">
+                <div class="profile-container">
+                    <img class="profile-pic" src="styles/images/profile5.jpg" alt="User 5">
+
+                    <div class="user-info">
+                        <span class="username"> Harry Potter </span>
+                    </div>
+                </div>
+
+                <div class="post-container">
+                    <div class="post-title">
+                        <span class="title"> Hogwarts Legacy! </span> 
+                    </div>
+                    
+                    <div class="post-pic">
+                        <img class="game-pic" src="styles/images/post5.jpg" alt="Post 5 Image">
+                    </div>
+                </div>
+
+                <div class="post-info-container" data-game="hl">
+                    <div class="post-content">
+                        <p>
+                            I must say, playing Hogwarts Legacy was like revisiting my alma mater,
+                            Hogwarts, in a different era, and it felt magical in every sense.
+                            The ability to explore the enchanting castle and its surroundings in the 1800s,
+                            <span class="dots"> ... </span>
+                            <span class="more">
+                                while uncovering ancient secrets, truly made me feel like I was reliving my own history.
+                                The spells, potions, and fantastic creatures transported me back to my own adventures,
+                                and the freedom to shape my wizarding destiny was a captivating experience.
+                                It's a game that lets you write your own chapter in the magical world, and for that,
+                                it's a spellbinding journey worth embarking upon. Accio fun!
+                            </span>
+                        </p>
+                        <a onclick="myFunction('hl')" class="myBtn">Read more</a>
+                    </div>
+                </div>
+
+                <div class="comment-box">
+                    <div class="container mt-5">
+                        <div class="d-flex justify-content-center row">
+                            <div class="col-md-8">
+                                <div class="d-flex flex-column comment-section">
+                                    <div class="bg-white p-2">
+                                        <!-- <div class="d-flex flex-row user-info">
+                                            <img class="rounded-circle" src="/styles/images/togepost.png" width="40">
+
+                                            <div class="d-flex flex-column justify-content-start ml-2">
+                                                <span class="d-block font-weight-bold name"> Keisha Trajano </span>
+                                                <span class="date text-black-50"> Shared publicly - Oct 2023 </span>
+                                            </div> -->
+                                        </div>
+
+                                        <div class="mt-2">
+                                            <p class="comment-text">
+                                                Just started playing 'Hogwarts Legacy,' and I'm already loving the magical world they've created.
+                                                The attention to detail, the freedom to explore Hogwarts, and the immersive story have exceeded
+                                                my expectations. I'm excited to see where my character's journey takes me.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-white">
+                                        <div class="d-flex flex-row fs-12">
+                                            <div class="like p-2 cursor">
+                                                <i class="fa fa-thumbs-o-up"></i>
+                                                <span class="ml-1">Like</span>
+                                            </div>
+
+                                            <div class="like p-2 cursor">
+                                                <i class="fa fa-commenting-o"></i>
+                                                <span class="ml-1">Comment</span>
+                                            </div>
+
+                                            <div class="like p-2 cursor">
+                                                <i class="fa fa-share"></i>
+                                                <span class="ml-1">Share</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-light p-2">
+                                        <div class="d-flex flex-row align-items-start">
+                                            <img class="rounded-circle" src="/styles/images/purinpost.jpg" width="40">
+                                            <textarea class="form-control ml-1 shadow-none textarea"></textarea>
+                                        </div>
+
+                                        <div class="mt-2 text-right">
+                                            <button id="comment-btn" class="btn btn-primary btn-sm shadow-none" type="button">Post comment </button>
+                                            <button id="cancel-btn" class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="footer-container">
+            <ul class="footer-links">
+                <li><a href="#"> Privacy Policy </a></li>
+                <li><a href="#"> Terms of Service </a></li>
+                <li><a href="#"> Contact Us </a></li>
+                <li><a href="#"> About Us </a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>-->
         
         <!-- Bootstrap JavaScript and jQuery -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -446,7 +581,6 @@
 
         <!-- JavaScript Files -->
         <script src="/javascript/script.js"></script>
-        <script src="/javascript/comment.js"></script>
-        <script src="/javascript/user-profile.js"></script>
+        <script src="/javascript/test.js"></script>
     </body>
 </html>
