@@ -12,7 +12,7 @@ const Message = require('./server/schema/Messages');
 const Comment = require('./server/schema/Comments');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
-
+const Profile = require('./server/schema/profile');
 app.use(
     session({
       secret: process.env.SESSION_SECRET || 'fallback-secret-key',
@@ -69,13 +69,45 @@ app.get('/', (req, res) => {
 });
 
 // For a user profile page
-app.get('/profile', (req, res) => {
-  const userData = {
-      username: 'Alicia Smith',
-      email: 'aliciasmith@gmail.com',
-      bio: 'Im a 22-year-old gamer whos been exploring virtual worlds since I can remember. When Im not in front of my screen, youll find me cooking.',
-      gamingInterests: 'Im a Console & PC gamer whos into a wide range of games. My favorites include Overwatch, but Im always up for a good challenge or an epic adventure.',
-  };
+app.get('/profile', async (req, res) => {
+  let userData; // Define userData variable outside the try block
+
+    try {
+        // Assuming you have the user ID stored in the session
+        const userId = req.session.user.id;
+
+        // Query the database for the user's profile based on the user ID
+        const userProfile = await Profile.findOne({ user: userId });
+
+        if (userProfile) {
+            // Set default values if profile picture or bio is null
+            if (!userProfile.profilePictureURL) {
+                userProfile.profilePictureURL = 'styles/images/puripost.png';
+            }
+
+            if (!userProfile.bio) {
+                userProfile.bio = "I'm too lazy to put a bio.";
+            }
+
+            // If the profile is found, set the user data
+            userData = {
+                username: userProfile.username,
+                email: userProfile.email,
+                bio: userProfile.bio,
+                gamingInterests: userProfile.gamingInterests,
+                profilePictureURL: userProfile.profilePictureURL,
+            };
+        } else {
+            // If the profile is not found, handle accordingly (e.g., redirect to an error page)
+            res.status(404).send('Profile not found');
+            return; // Add return statement to exit the function
+        }
+    } catch (error) {
+        // Handle any errors that may occur during the database query
+        console.error(error);
+        res.status(500).send('Error fetching user profile');
+        return; // Add return statement to exit the function
+    }
   res.render('profile', userData);
 });
 
@@ -91,7 +123,7 @@ app.get('/posts/:postID', (req, res) => {
 app.get('/reviews', async (req, res) => {
     try {
         // Fetch posts with associated user information
-        const reviewsData = await Post.find().populate('author').exec();
+        const reviewsData = await Post.find().populate({ path: 'author', model: 'Profile' }).exec();
 
         // Render the EJS template and pass the data
         res.render('reviews', { reviewsData });
@@ -211,6 +243,8 @@ app.post('/signup', async (req, res) => {
     // Create a new user with hashed password
     const hashedPassword = await bcrypt.hash(password, 10); // Salt rounds = 10
     user = new User({ username, email, password: hashedPassword });
+    const userProfile = new Profile({ username, email });
+    await userProfile.save();
     await user.save();
     
     res.status(201).send('User registered successfully');

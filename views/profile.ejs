@@ -57,8 +57,8 @@
                     <div class="card">
                         <img src="styles/images/togepost.png" class="card-img-top" alt="User Avatar">
                         <div class="card-body">
-                            <h5 class="card-title"><%= username %></h5>
-                            <p class="card-text"><%= email %></p>
+                            <h5 class="card-title"><%= userProfile.username %></h5>
+                            <p class="card-text"><%= userProfile.email %></p>
                         </div>
                     </div>
                 </div>
@@ -69,11 +69,8 @@
                         <div class="card-body">
                             <h5 class="card-title">Gaming Bio</h5>
                             <p class="card-text">🎮 About Me 🎮</p>
-                            <p class="card-text"><%= bio %></p>
+                            <p class="card-text"><%= userProfile.bio %></p>
                             <br>
-                            <br>
-                            <p class="card-text">🎯 Gaming Interests:</p>
-                            <p class="card-text"><%= gamingInterests %></p>
                             <a href="#" class="btn btn-primary">Edit Bio</a>
                         </div>
                     </div>

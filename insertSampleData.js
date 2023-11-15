@@ -4,7 +4,6 @@ const Post = require('./server/schema/Post');
 const Message = require('./server/schema/Messages');
 const Profile = require('./server/schema/profile'); 
 
-
 // MongoDB connection string - replace 'yourDatabaseName' with your actual database name
 const dbURL = 'mongodb+srv://blabdue:iawynikd@blabdue.m4zqcqu.mongodb.net/test2'; 
 
@@ -26,32 +25,42 @@ mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
   })
   .catch(err => console.error('Connection error:', err));
 
+  async function getProfileIdByUsername(username) {
+    const profile = await Profile.findOne({ username });
+    return profile ? profile._id : null;
+  }
+
 async function insertSamplePosts() {
   const samplePosts = [
     {
       title: "First Post",
       content: "This is the first sample post",
-      mediaPath: "uploads/post1.jpg"
+      mediaPath: "uploads/post1.jpg",
+      author: await getProfileIdByUsername("Alice")
     },
     {
       title: "Second Post",
       content: "This is the second sample post",
-      mediaPath: "uploads/post2.jpg"
+      mediaPath: "uploads/post2.jpg",
+      author: await getProfileIdByUsername("Bob")
     },
     {
       title: "Third Post",
       content: "This is the third sample post",
-      mediaPath: "uploads/post3.jpg"
+      mediaPath: "uploads/post3.jpg",
+      author: await getProfileIdByUsername("Charlie")
     },
     {
       title: "Fourth Post",
       content: "This is the fourth sample post",
-      mediaPath: "uploads/post4.jpg"
+      mediaPath: "uploads/post4.jpg",
+      author: await getProfileIdByUsername("Dana")
     },
     {
       title: "Fifth Post",
       content: "This is the fifth sample post",
-      mediaPath: "uploads/post5.jpg"
+      mediaPath: "uploads/post5.jpg",
+      author: await getProfileIdByUsername("Eve")
     }
   ];
 
