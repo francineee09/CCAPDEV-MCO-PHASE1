@@ -5,7 +5,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
-const bcrypt = require('bcryptjs');
 const exphbs = require('express-handlebars');
 const multer = require('multer');
 const session = require('express-session');
