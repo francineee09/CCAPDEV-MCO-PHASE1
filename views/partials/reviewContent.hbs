@@ -1,34 +1,36 @@
+
+
 <div class="profile-container">
-    <img class="profile-pic" src="styles/images/profile1.jpg" alt="User 1">
+    {{#if author}}
+    <img class="profile-pic" src="{{author.profilePictureURL}}" alt="{{author.username}}">
 
     <div class="user-info">
-        <span class="username"> Emily Anderson </span>
+        <span class="username">{{author.username}}</span>
     </div>
+    {{else}}
+    <span class="username">Unknown Author</span>
+    {{/if}}
 </div>
 
 <div class="post-container">   
     <div class="post-title">
-        <span class="title"> God of War: Ragnarok </span> 
+        <span class="title">{{title}}</span> 
     </div>
-        
+    <span class="post-date">{{createdAt}}</span>
     <div class="post-pic">
-        <img class="game-pic" src="styles/images/post1.jpg" alt="Post 1 Image">
+        <img class="game-pic" onclick="window.location='user-profile.html?userId=';"
+            style="cursor: pointer;" src="{{mediaPath}}" alt="Post Image">
     </div>
 </div>
 
 <div class="post-info-container" data-game="gow">
     <div class="post-content">
         <p> 
-            This is an amazing game! I just finished playing it, and I highly recommend it to everyone.
-            The new weapons are fun and it doesn't force them down your throat.
+            {{content}}
             <span class="dots">...</span>
             <span class="more">
-                There are times that you just use them and just might find them entertaining,
-                but it never takes the chaos blades from you. The upgrades are great. 
-                I find that the system is not overly confusing, there are plenty of options
-                and possible amazing styles to suit you.
             </span>
         </p>
-        <a onclick="myFunction('gow')" class="myBtn"> Read more </a>
+        <a onclick="myFunction('{{game}}')" class="myBtn"> Read more </a>
     </div>
 </div>

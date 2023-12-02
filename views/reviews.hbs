@@ -18,15 +18,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>
 
 <!-- JavaScript Files -->
-<script src="/javascript/script.js"></script>
-<script src="/javascript/test.js"></script>
+<script src="/javascript/script.js" defer></script>
+<script src="/javascript/comment.js" defer></script>
 <body>
     {{> navibar}}
     <div class="latest-content">
         <div class="reviews-title"> Latest Reviews and Discussions </div>
+        {{#each reviewsData}}
         <div class="user-container">
             {{> reviewContent}}
             {{> reviewsComments}}
-        </div>    
+        </div> 
+         {{/each}}   
         </div>
 </body>

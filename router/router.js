@@ -70,15 +70,17 @@ router.post('/signup', async (req, res) => {
     }
   });
 
-router.get('/reviews', async (req, res) => {
+  router.get('/reviews', async (req, res) => {
     try {
         const reviewsData = await Post.find().populate({ path: 'author', model: 'Profile' }).exec();
-        res.render('reviews'/*, { reviewsData }*/);
+        res.render('reviews', { reviewsData, layout: 'main' });
     } catch (error) {
         console.error('Error fetching reviews:', error);
         res.status(500).send('Internal Server Error');
     }
 });
+
+
   
 
 
