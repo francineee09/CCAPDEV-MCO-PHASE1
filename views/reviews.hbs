@@ -8,9 +8,6 @@
 <link rel="stylesheet" href="styles/general.css">
 <link rel="stylesheet" href="styles/reviews.css"/>
 
-<!-- Font Awesome for icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Bootstrap JavaScript and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" defer></script>
@@ -24,10 +21,12 @@
 <script src="/javascript/script.js"></script>
 <script src="/javascript/test.js"></script>
 <body>
-    {> navibar}
+    {{> navibar}}
     <div class="latest-content">
         <div class="reviews-title"> Latest Reviews and Discussions </div>
-            {> reviewContent}
-            {> reviewsComments}   
+        <div class="user-container">
+            {{> reviewContent}}
+            {{> reviewsComments}}
+        </div>    
         </div>
 </body>
