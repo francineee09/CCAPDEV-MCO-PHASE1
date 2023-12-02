@@ -6,6 +6,27 @@ const Post = require('../server/schema/Post');
 const Profile = require('../server/schema/profile');
 const router = Router();
 const bcrypt = require('bcryptjs');
+const multer = require('multer');
+const path = require('path');
+
+
+// this is for multer
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      console.log('Uploading file:', file.originalname);
+      cb(null, 'uploads/');
+    },
+    filename: function (req, file, cb) {
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+      const filename = file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname);
+      console.log('Saving as:', filename);
+      cb(null, filename)
+    }
+  });
+  
+  const upload = multer({ storage: storage });
+
+// *********************************8
 
 router.get('/', async function(req, res) {
    res.render('index');
@@ -79,6 +100,69 @@ router.post('/signup', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+
+router.get('/user-profile/:username', async (req, res) => {
+    try {
+        console.log(req.session.user);
+        const username = req.params.username;
+        console.log(username);
+        const profile = await Profile.findOne({ username });
+        if (profile) {
+            // Render the userProfile template with user data
+            console.log(profile);
+            res.render('userProfile', {profile});
+        } else {
+            // User not found
+            res.status(404).send('User not found');
+        }
+    } catch (error) {
+        // Handle errors
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+router.get('/dashboard', async (req, res) => {
+    try {
+        const user = req.session.user;
+        const username = user.username;
+        const profile = await Profile.findOne({username});
+        const posts = await Post.find({ author: profile._id });
+        console.log(profile);
+        res.render('dashboard', {posts});
+    } catch (error) {
+        // Handle errors
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+router.post('/submit-post', upload.single('media'), async (req, res) => {
+    console.log('Request Body:', req.body);
+    console.log('Request File:', req.file);
+    try {
+        const user = req.session.user;
+        const username = user.username;
+        const profile = await Profile.findOne({username});
+        const { title, content } = req.body;
+        let mediaPath = '';
+  
+      if (req.file) {
+        mediaPath = req.file.path; // Set the path where Multer saves the file
+      }
+  
+      const newPost = new Post({ title, content, mediaPath, author:profile});
+      await newPost.save();
+      res.status(201).json({ message: 'Post created successfully', post: newPost });
+    } catch (error) {
+      console.error('Error creating post:', error);
+      if (error.name === 'ValidationError') {
+          console.error('Validation Error Details:', error.errors);
+      }
+      res.status(500).json({ message: 'Error in creating post', error: error.message });
+  }
+  });
+
 
 
   

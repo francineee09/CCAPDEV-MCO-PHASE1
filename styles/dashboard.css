@@ -334,3 +334,8 @@ header {
 .profile-pic{
     width: 200px;
 }
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+}

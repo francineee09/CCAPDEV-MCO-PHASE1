@@ -1,0 +1,123 @@
+
+<title>Dashboard - GamersNook!</title>
+<link rel="icon" type="image/x-icon" href="/styles/images/fav2.png">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- CSS Files -->
+<link rel="stylesheet" href="styles/general.css">
+<link rel="stylesheet" href="styles/dashboard.css"/>
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" defer></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
+
+<!-- JavaScript Files -->
+<script src="javascript/script.js" defer></script>
+
+<body>
+       {{> navibar}}
+        <main>
+            <div class="mb-3 serchBox">
+                <input type="text" class="form-control" id="searchButton" onkeyup="searchPost()" placeholder="Search by post title">
+            </div>
+            <section class="container my-5">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h2 class="card-title">Create a New Post</h2>
+                                <!-- HTML form for posting -->
+                                <form id="postForm" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label for="postTitle" >Post Title:</label>
+                                        <input type="text" id="postTitle" class="form-control Title" placeholder="Enter a title for your post">
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea id="postContent" class="form-control" placeholder="What's on your mind?" rows="4"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="mediaUpload">Upload Media (Optional):</label>
+                                        <input type="file" class="form-control-file" id="mediaUpload" name="media" accept="image/*">
+                                    </div>
+                                    <button id="postButton" class="btn btn-primary mt-3">Post</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{#if posts}}
+                    {{#each posts}}
+                        {{> dashboardPost}}
+                    {{/each}}
+                {{/if}}
+            </section>
+        </main>
+
+        <!-- MESSAGES -->
+        <div id="chatIcon" class="chat-icon">
+            <img class=chat-icon-image src="/styles/images/buublechat.png" alt="Chat Icon">
+        </div>
+
+        <div id="chatBox" class="chat-box" style="display: none;">
+            <div class="chat-header">
+                <h5>Chats</h5>
+                <i id="startNewChat" class="fas fa-comment-dots new-chat-icon"></i>
+                <span id="closeChat" class="close-button">&times;</span>
+            </div>
+
+            <div class="chat-content">
+                <!-- Chat Sidebar -->
+                <div class="chat-sidebar" id="chatSidebar">
+                    <div class="chat-search">
+                        <input type="text" id="chatSearchInput" placeholder="Search chats...">
+                    </div>
+                    <div class="chat-entry active">
+                        <img src="/styles/images/purinpost.jpg" alt="User 1 Avatar">
+                        <span>Purin</span>
+                    </div>
+                    <div class="chat-entry">
+                        <img src="/styles/images/togepost.png" alt="User 2 Avatar">
+                        <span>Toge</span>
+                    </div>
+                    <div class="chat-entry">
+                        <img src="/styles/images/instadog.jpg" alt="User 3 Avatar">
+                        <span>Dog</span>
+                    </div>
+                </div>
+                
+                <!-- Chat Messages -->
+                <div class="chat-messages" id="chatMessages"></div>
+            </div>
+            
+            <div class="chat-input">
+                <input type="text" id="messageInput" placeholder="Type a message...">
+                <button id="sendMessage">Send</button>
+            </div>
+        </div>
+
+        
+        <!--<div class="footer-container">
+            <ul class="footer-links">
+                <li><a href="#"> Privacy Policy </a></li>
+                <li><a href="#"> Terms of Service </a></li>
+                <li><a href="#"> Contact Us </a></li>
+                <li><a href="#"> About Us </a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>-->
+
+        <!-- Bootstrap JavaScript and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <!-- JavaScript Files -->
+        <script src="/javascript/script.js"></script>
+    </body>

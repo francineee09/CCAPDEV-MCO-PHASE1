@@ -270,7 +270,7 @@ function addNewPostToReviews() {
 
     var postTitleElement = document.createElement('div');
     postTitleElement.className = 'post-title';
-    postTitleElement.innerHTML = '<span class="title" onclick="navigateToUserProfile(\'' + userProfilePic + '\', \'' + username + '\')">' + postTitle + '</span>';
+    //postTitleElement.innerHTML = '<span class="title" onclick="navigateToUserProfile(\'' + userProfilePic + '\', \'' + username + '\')">' + postTitle + '</span>';
     newPost.appendChild(postTitleElement);
 
     var postTitleElement = document.createElement('div');
@@ -287,6 +287,12 @@ function addNewPostToReviews() {
     var reviewsContainer = document.getElementById('reviews-container');
     reviewsContainer.appendChild(newPost);
 }
+
+function redirectToUserProfile(username) {
+    // Redirect logic here, for example:
+    window.location.href = '/user-profile/' + username;
+}
+
 
 
 /*************************************************************/

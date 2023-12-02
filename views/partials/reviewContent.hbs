@@ -18,8 +18,7 @@
     </div>
     <span class="post-date">{{createdAt}}</span>
     <div class="post-pic">
-        <img class="game-pic" onclick="window.location='user-profile.html?userId=';"
-            style="cursor: pointer;" src="{{mediaPath}}" alt="Post Image">
+        <img class="game-pic" onclick="redirectToUserProfile('{{author.username}}');" style="cursor: pointer;" src="{{mediaPath}}" alt="Post Image">
     </div>
 </div>
 
