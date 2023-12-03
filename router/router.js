@@ -28,10 +28,12 @@ const storage = multer.diskStorage({
 
 // *********************************8
 
+//rendering index
 router.get('/', async function(req, res) {
    res.render('index');
 });
 
+//sign up
 router.post('/signup', async (req, res) => {
     try {
       // Extract user details from request body
@@ -57,6 +59,7 @@ router.post('/signup', async (req, res) => {
     }
   });
 
+  //log in
   router.post('/login', async (req, res) => {
     const { username, email, password } = req.body;
     const user = await User.findOne({ email: email});
@@ -91,6 +94,7 @@ router.post('/signup', async (req, res) => {
     }
   });
 
+  //for rendeing reviews page
   router.get('/reviews', async (req, res) => {
     try {
         const reviewsData = await Post.find().populate({ path: 'author', model: 'Profile' }).exec();
@@ -101,6 +105,7 @@ router.post('/signup', async (req, res) => {
     }
 });
 
+//for rendering bio page of other users
 router.get('/user-profile/:username', async (req, res) => {
     try {
         console.log(req.session.user);
@@ -122,6 +127,7 @@ router.get('/user-profile/:username', async (req, res) => {
     }
 });
 
+//for rendering dashboard
 router.get('/dashboard', async (req, res) => {
     try {
         const user = req.session.user;
@@ -130,6 +136,7 @@ router.get('/dashboard', async (req, res) => {
         const posts = await Post.find({ author: profile._id });
         console.log(profile);
         res.render('dashboard', {posts});
+        console.log({posts});
     } catch (error) {
         // Handle errors
         console.error(error);
@@ -137,6 +144,7 @@ router.get('/dashboard', async (req, res) => {
     }
 });
 
+//for publishing new post
 router.post('/submit-post', upload.single('media'), async (req, res) => {
     console.log('Request Body:', req.body);
     console.log('Request File:', req.file);
@@ -162,6 +170,71 @@ router.post('/submit-post', upload.single('media'), async (req, res) => {
       res.status(500).json({ message: 'Error in creating post', error: error.message });
   }
   });
+
+  //for getting the edit form to edit the post of logged-in user
+  router.get('/edit/:postId', async (req, res) => {
+    try {
+        const postId = req.params.postId;
+        const editedPost = await Post.findById(postId);
+        console.log(editedPost);
+
+        if (!editedPost) {
+            return res.status(404).send('Post not found');
+        }
+        res.render('editPost', { post: editedPost});
+
+    } catch (error) {
+        console.error('Error fetching post for edit:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+//for editing posts of user that is logged-in
+router.post('/update/:_id', upload.single('media'), async (req, res) => {
+    console.log('Request Body:', req.body);
+    console.log('Request File:', req.file);
+    try {
+        const postId = req.params._id;
+        const editedPost = await Post.findById(postId);
+
+        if (!editedPost) {
+            return res.status(404).send('Post not found');
+        }
+        editedPost.title = req.body.title;
+        editedPost.content = req.body.content;
+
+        if (req.file) {
+            editedPost.mediaPath = req.file.path;
+        }
+        editedPost.updatedAt = new Date();
+        await editedPost.save();
+        res.redirect('/dashboard');
+
+    } catch (error) {
+        console.error('Error editing post:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+//for deleting posts in dashboard
+router.post('/delete/:postId', async (req, res) => {
+    try {
+        const postId = req.params.postId;
+        console.log('postId:', postId);
+        const deletePost = await Post.findById(postId);
+        console.log(deletePost);
+
+        if (!deletePost) {
+            return res.status(404).send('Post not found');
+        }
+        await Post.findByIdAndDelete(postId);
+        res.redirect('/dashboard');
+    } catch (error) {
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+  
 
 
 

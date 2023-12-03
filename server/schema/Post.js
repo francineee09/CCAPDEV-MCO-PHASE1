@@ -7,6 +7,7 @@ const postSchema = new mongoose.Schema({
   mediaPath: { type: String }, // This will store the path to the media file
   author: { type: mongoose.Schema.Types.ObjectId, ref: 'Profile' }, // Reference to the User model
   createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: null },
   comments: [
     {
         user: {
@@ -19,5 +20,10 @@ const postSchema = new mongoose.Schema({
     }
 ],
 });
+
+postSchema.pre('save', function (next) {
+    this.updatedAt = new Date();
+    next();
+  });
 
 module.exports = mongoose.model('Post', postSchema);

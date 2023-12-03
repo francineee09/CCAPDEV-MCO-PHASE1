@@ -24,6 +24,9 @@
     {{> navibar}}
     <div class="latest-content">
         <div class="reviews-title"> Latest Reviews and Discussions </div>
+         <div class="search-box" style="margin-right: 2%;">
+            <input type="text" id="search" onkeyup="searching()"  placeholder="Search post by title" style="padding:5px;">
+        </div>
         {{#each reviewsData}}
         <div class="user-container">
             {{> reviewContent}}

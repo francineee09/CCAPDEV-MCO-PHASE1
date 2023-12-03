@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Modal with Image Upload</title>
+  <style>
+    /* Add your styling here */
+    #editModal {
+      display: block;
+      /* Add other styles as needed */
+    }
+
+    #previewImage {
+      max-width: 100%;
+      margin-top: 10px;
+    }
+
+    .input-container {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Edit Modal -->
+<div id="editModal">
+  <div class="input-container">
+    <label for="imageInput">Upload New Image for Media Path:</label>
+    <input type="file" id="imageInput" accept="image/*" onchange="handleImageUpload()">
+  </div>
+  <div class="input-container">
+    <label for="editTitle">Edit Title:</label>
+    <input type="text" id="editTitle">
+  </div>
+  <div class="input-container">
+    <label for="editContent">Edit Content:</label>
+    <textarea id="editContent"></textarea>
+  </div>
+  <!-- Add other fields for editing -->
+  <button onclick="saveChanges()">Save Changes</button>
+</div>
+
+<script>
+  // Function to handle image upload
+  function handleImageUpload() {
+    const input = document.getElementById('imageInput');
+    const previewImage = document.getElementById('previewImage');
+    const mediaPathInput = document.getElementById('mediaPath');
+
+    const file = input.files[0];
+    if (file) {
+      // Display the preview image
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        previewImage.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+
+      // Update the media path input with the new file name
+      mediaPathInput.value = file.name; // You can adjust this based on your requirements
+    }
+  }
+
+  // Function to save changes (you can customize this)
+  function saveChanges() {
+    const editTitle = document.getElementById('editTitle').value;
+    const editContent = document.getElementById('editContent').value;
+    const mediaPath = document.getElementById('mediaPath').value;
+
+    // Add your logic to save changes, e.g., update the database with the new information
+    console.log("Title:", editTitle);
+    console.log("Content:", editContent);
+    console.log("Media Path:", mediaPath);
+
+    // You can close the modal or perform other actions as needed
+  }
+</script>
+
+</body>
+</html>

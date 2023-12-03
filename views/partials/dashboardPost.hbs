@@ -1,9 +1,17 @@
-<div class="card mb-4">
+<script src="/javascript/script.js" defer></script>
+
+<div class="card mb-4" data-post-id="{{postId}}">
     <div class="card-body">
         <h3 class="card-title">{{title}}</h3>
         <p class="card-text">{{content}}</p>
         <p class="date">{{createdAt}}</p>
         <img src="{{mediaPath}}" class="img-fluid" style="width: 35%">
-        <button class="btn btn-danger mt-2">Delete</button>
+        <form method="post" action="/delete/{{_id}}">
+            <button type="submit" class="btn btn-danger mt-2">Delete</button>
+        </form>
+        <button class="btn btn-danger mt-2 edit-post-btn" data-post-id="{{postId}}" onclick="editPost('{{_id}}')" style="background-color: orangered;">Edit</button>
+        <script>
+            console.log('postId:', '{{postId}}');
+        </script>
     </div>
 </div>

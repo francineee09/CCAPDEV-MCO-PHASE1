@@ -722,3 +722,47 @@ function fetchPosts() {
         })
         .catch(error => console.error('Error:', error));
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const editForm = document.getElementById('edit-post-form');
+    console.log(editForm);
+    editForm.addEventListener('submit', async function (event){
+        event.preventDefault(); 
+        const title = document.getElementById('title').value;
+        const content = document.getElementById('content').value;
+        const media = document.getElementById('media').files[0];
+        console.log('Title:', title);
+        console.log('Content:', content);
+        console.log('Media:', media);
+    
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('content', content);
+        formData.append('media', media);
+        const postId = document.getElementById('postId').value;
+        try {
+            // Make a fetch request to update the post
+            const response = await fetch(`/update/${postId}`, {
+                method: 'POST',
+                body: formData,
+            });
+    
+            if (response.ok) {
+                window.location.href = '/dashboard';
+            } else {
+                console.error('Update failed:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Network error:', error);
+        }
+  });
+
+});
+
+  function editPost(postId) {
+    // Redirect to the editPost page with the postId parameter
+    console.log('editPost called with postId:', postId);
+    window.location.href = '/edit/' + postId;
+  }
+  
+ 
