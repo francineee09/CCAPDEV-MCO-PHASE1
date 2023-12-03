@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const Schema = new mongoose.Schema;
+const Schema = mongoose.Schema;
 
-const messageSchema = Schema({
+const messageSchema = new Schema({
   sender: String, // will later change this to reference a User model
 
   content: {
@@ -17,5 +17,4 @@ const messageSchema = Schema({
 });
 
 const Message = mongoose.model('Message', messageSchema);
-
 module.exports = Message;

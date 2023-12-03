@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const Schema = new mongoose.Schema;
+const Schema = mongoose.Schema;
 
-const commentSchema = Schema({
+const commentSchema = new Schema({
     content: String,
     postId: {
         type: mongoose.Schema.Types.ObjectId,
@@ -10,5 +10,4 @@ const commentSchema = Schema({
 }, { timestamps: true });
 
 const Comment = mongoose.model('Comment', commentSchema);
-
 module.exports = Comment;
