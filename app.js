@@ -9,7 +9,7 @@ const multer = require('multer');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const connect = require('./server/db');
-const router = require('./router/router');
+const router = require('./controller/router/router');
 
 async function main() {
   const app = express();
@@ -24,10 +24,12 @@ async function main() {
           cookie: { maxAge: 1000 * 60 * 60 * 24 }, // Session cookie will expire after one day
       })
   );
-  app.use('/user-profile/styles', express.static('./styles', { type: 'text/css' }));
-  app.use('/user-profile/javascript', express.static('./javascript', { type: 'application/javascript' }));
+  app.use('/user-profile/styles', express.static('./public/css/styles', { type: 'text/css' }));
+  app.use('/user-profile/javascript', express.static('./public/js', { type: 'application/javascript' }));
   app.use('/static', express.static('public'));
+  
   app.use(express.static(path.join(__dirname)));
+
   app.engine("hbs", exphbs.engine({
     extname: "hbs", 
     helpers: {
@@ -65,7 +67,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 app.use('/uploads', express.static('uploads'));
 const fs = require('fs');
-const dir = './uploads';
+const dir = './public/uploads';
 if (!fs.existsSync(dir)){
     fs.mkdirSync(dir, { recursive: true });
     console.log('Created directory:', dir);

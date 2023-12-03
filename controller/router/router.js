@@ -1,9 +1,9 @@
 const { Router }= require('express');
-const User = require('../server/schema/User');
-const Comments = require('../server/schema/Comments');
-const Messages = require('../server/schema/Messages');
-const Post = require('../server/schema/Post');
-const Profile = require('../server/schema/profile');
+const User = require('../../server/schema/User');
+const Comments = require('../../server/schema/Comments');
+const Messages = require('../../server/schema/Messages');
+const Post = require('../../server/schema/Post');
+const Profile = require('../../server/schema/profile');
 const router = Router();
 const bcrypt = require('bcryptjs');
 const multer = require('multer');
