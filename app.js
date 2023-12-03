@@ -8,7 +8,7 @@ const exphbs = require('express-handlebars');
 const multer = require('multer');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
-const connect = require('./server/db');
+const connect = require('./model/db');
 const router = require('./controller/router/router');
 
 async function main() {
