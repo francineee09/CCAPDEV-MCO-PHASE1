@@ -1,73 +1,78 @@
+<!-- Comment Box -->
 <div class="comment-box">
-                    <div class="bg-light p-2">
-                        <!-- Assuming you're passing a variable named 'comments' to this template -->
-                        {{#if comments.length}}
-                        {{#each comments}}
-                        <div class="card bg-white p-2">
-                            <!-- User Info -->
-                            <div class="d-flex flex-row user-info">
-                                <img class="rounded-circle" src="{{user.profilePictureURL}}" width="40">
-                                <div class="d-flex flex-column justify-content-start ml-2">
-                                    <span class="d-block font-weight-bold name">{{user.username}}</span>
-                                    <span class="date text-black-50">Shared publicly - {{date}}</span>
-                                </div>
-                            </div>
-
-                            <!-- Comment Text -->
-                            <div class="mt-2">
-                                <p class="comment-text">{{content}}</p>
-                            </div>
-
-                            <!-- Like, Comment, Share Buttons -->
-                            <div class="d-flex flex-row fs-12 mt-2">
-                                <div class="like p-2 cursor">
-                                    <i class="fa fa-thumbs-o-up"></i>
-                                    <span class="ml-1">Like</span>
-                                </div>
-                                <div class="like p-2 cursor">
-                                    <i class="fa fa-commenting-o"></i>
-                                    <span class="ml-1 reply">Comment</span>
-                                </div>
-                            </div>
-
-                            <!-- Reply Input Box (initially hidden) -->
-                            <div class="comment-details" style="display: none;">
-                                <div class="d-flex flex-row align-items-start">
-                                    <img class="rounded-circle" src="/styles/images/purinpost.jpg" width="40">
-                                    <textarea class="form-control ml-1 shadow-none textarea"
-                                        placeholder="Add text here"></textarea>
-                                </div>
-                                <div class="mt-2 text-right">
-                                    <button class="btn btn-primary btn-sm shadow-none submit" type="button">Submit
-                                    </button>
-                                    <button class="btn btn-outline-primary btn-sm ml-1 shadow-none cancel"
-                                        type="button">Cancel</button>
-                                </div>
-                            </div>
-
+    <div class="bg-light p-2">
+        <!-- Display Comments -->
+        {{#if comments.length}}
+            {{#each comments}}
+                <div class="card bg-white p-2 mb-2">
+                    <!-- User Info -->
+                    <div class="d-flex flex-row user-info">
+                        <img class="rounded-circle" src="{{user.profilePictureURL}}" alt="{{user.username}}'s profile picture" width="40">
+                        <div class="d-flex flex-column justify-content-start ml-2">
+                            <span class="d-block font-weight-bold name">{{user.username}}</span>
+                            <span class="date text-black-50">Shared publicly - {{date}}</span>
                         </div>
-                        {{/each}}
-                        {{/if}}
+                    </div>
 
-                        <!-- Always show an empty comment box for users to add comments -->
-                        <div class="card bg-white p-2">
-                            <div class="comment-details">
-                                <div class="d-flex flex-row align-items-start">
-                                    <img class="rounded-circle" src="/styles/images/purinpost.jpg" width="40">
-                                    <textarea class="form-control ml-1 shadow-none textarea"
-                                        placeholder="Add text here"></textarea>
-                                </div>
-                                <div class="mt-2 text-right">
-                                    <button class="btn btn-primary btn-sm shadow-none submit" type="button">Submit
-                                    </button>
-                                    {{!-- <button class="btn btn-outline-primary btn-sm ml-1 shadow-none cancel"
-                                        type="button">Cancel</button>
-                                </div> --}}
-                            </div>
+                    <!-- Comment Text -->
+                    <div class="mt-2">
+                        <p class="comment-text text-dark">{{content}}</p>
+                    </div>
+
+                    <!-- Like, Comment, Share Buttons for the Comment -->
+                    <div class="d-flex flex-row fs-12 mt-2">
+                        <button class="btn btn-light like-comment-btn" data-comment-id="{{_id}}">
+                            <i class="fa fa-thumbs-o-up"></i>
+                            Like
+                        </button>
+                        <button class="btn btn-light reply-comment-btn ml-2">
+                            <i class="fa fa-reply"></i>
+                            Reply
+                        </button>
+                    </div>
+
+                    <!-- Reply Input Box (initially hidden) -->
+                    <div class="comment-details" style="display: none;">
+                        <div class="d-flex flex-row align-items-start">
+                            <img class="rounded-circle" src="/styles/images/purinpost.jpg" alt="Your profile picture" width="40">
+                            <textarea class="form-control ml-1 shadow-none textarea" placeholder="Write your reply..."></textarea>
+                        </div>
+                        <div class="mt-2 text-right">
+                            <button class="btn btn-primary btn-sm shadow-none submit-reply-btn" type="button">Submit</button>
+                            <button class="btn btn-outline-primary btn-sm ml-1 shadow-none cancel-reply-btn" type="button">Cancel</button>
                         </div>
                     </div>
                 </div>
+            {{/each}}
+        {{else}}
+            <!-- Display a message when there are no comments -->
+            <p class="text-dark">No comments yet.</p>
+        {{/if}}
 
+        <!-- Like and Comment Buttons for the Post -->
+        <div class="d-flex flex-row fs-12 mt-2">
+            <button class="btn btn-light like-btn" data-post-id="{{_id}}">
+                <i class="fa fa-thumbs-o-up"></i>
+                Like
+            </button>
+            <button class="btn btn-light comment-btn ml-2" data-post-id="{{_id}}">
+                <i class="fa fa-commenting-o"></i>
+                Comment
+            </button>
+        </div>
+
+        <!-- Comment Input Box -->
+        <div class="card bg-white p-2 mt-2">
+            <div class="comment-details" style="display: none;">
+                <div class="d-flex flex-row align-items-start">
+                    <img class="rounded-circle" src="/styles/images/purinpost.jpg" alt="Your profile picture" width="40">
+                    <textarea class="form-control ml-1 shadow-none textarea" placeholder="Write your comment..."></textarea>
+                </div>
+                <div class="mt-2 text-right">
+                    <button class="btn btn-primary btn-sm shadow-none submit" type="button">Submit</button>
+                    <button class="btn btn-outline-primary btn-sm ml-1 shadow-none cancel" type="button">Cancel</button>
+                </div>
             </div>
         </div>
     </div>
+</div>

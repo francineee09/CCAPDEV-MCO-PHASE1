@@ -1,35 +1,49 @@
+<title>Edit Post - GamersNook!</title>
+<link rel="icon" type="image/x-icon" href="/styles/images/fav2.png">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-<!-- Link to Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- CSS Files -->
+<link rel="stylesheet" href="/styles/general.css">
+<link rel="stylesheet" href="/styles/dashboard.css">
 
-<!-- Other CSS Files -->
-<link rel="stylesheet" href="styles/general.css">
-<link rel="stylesheet" href="styles/reviews.css"/>
-
-<!-- Bootstrap JavaScript and jQuery -->
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" defer></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
 
-<!-- Other JavaScript Files -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous" defer></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>
-<script src="/javascript/script.js" defer></script>
+<!-- JavaScript Files -->
+<script src="javascript/script.js" defer></script>
 
-
-<h1>Edit Post</h1>
-    <form method="post" action="/update/{{post._id}}" id="edit-post-form" enctype="multipart/form-data">
-      <div class="form-group">
-        <label for="title">Title</label>
-        <input class="form-control" type="text" id="title" name="title" value="{{post.title}}" required>
-
-        <label for="content">Post</label>
-        <textarea class="form-control"id="content" name="content" required rows="5" cols="30" required>{{post.content}}</textarea>
-
-         <label for="media">Upload New Image for Media Path</label>
-        <input type="file" id="media" name="media" accept="image/*">
-    </div>
-    </div>
-    <button class="btn btn-primary" type="submit" name="button">update</button>
-</form>
+<body>
+  {{> navibar}}
+  <main>
+    <section class="container my-5">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="card mb-4">
+                  <div class="card-body">
+                      <h2 class="card-title">Edit Post</h2>
+                      <form method="post" action="/update/{{post._id}}" id="edit-post-form" enctype="multipart/form-data">
+                          <div class="form-group">
+                              <label for="title">Post Title</label>
+                              <input class="form-control" type="text" id="title" name="title" value="{{post.title}}" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="content">Post</label>
+                              <textarea id="postContent" class="form-control" id="content" name="content" required rows="5" cols="30" required>{{post.content}}</textarea>
+                          </div>
+                          <div class="form-group">
+                              <label for="media">Upload New Image for Media Path</label>
+                              <input type="file" class="form-control-file" id="media" name="media" accept="image/*">
+                          </div>
+                            <button class="btn btn-primary" type="submit" name="button">Update</button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </section>
+  </main>
+</body>

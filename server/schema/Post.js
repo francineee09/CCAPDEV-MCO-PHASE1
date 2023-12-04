@@ -8,17 +8,8 @@ const postSchema = new mongoose.Schema({
   author: { type: mongoose.Schema.Types.ObjectId, ref: 'Profile' }, // Reference to the User model
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: null },
-  comments: [
-    {
-        user: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
-        },
-        content: String,
-        date: Date
-        // Other comment properties if ever there will be any additionals. 
-    }
-],
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
+  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 });
 
 postSchema.pre('save', function (next) {

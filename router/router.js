@@ -1,6 +1,6 @@
 const { Router }= require('express');
 const User = require('../server/schema/User');
-const Comments = require('../server/schema/Comments');
+const Comment = require('../server/schema/Comments');
 const Messages = require('../server/schema/Messages');
 const Post = require('../server/schema/Post');
 const Profile = require('../server/schema/profile');
@@ -8,7 +8,8 @@ const router = Router();
 const bcrypt = require('bcryptjs');
 const multer = require('multer');
 const path = require('path');
-
+const express = require('express');
+router.use(express.json());
 
 // this is for multer
 const storage = multer.diskStorage({
@@ -234,10 +235,94 @@ router.post('/delete/:postId', async (req, res) => {
     }
 });
 
+//for comments
+// let commentsData = [];
+// router.use(express.json());
+// router.post('/comment/:postId', (req, res) => {
+//     const { content, comment_date, replies, main_comment, likes } = req.body;
+//     const { postId } = req.params;
+//     // Assuming you have a Comment model or schema
+//     const newComment = {
+//         content,
+//         date: comment_date,
+//         replies,
+//         likes,
+//         postId,
+//     };
+
+//     // Add the new comment to the commentsData array (replace this with database operations)
+//     commentsData.push(newComment);
+
+//     res.json(newComment);
+// });
   
+router.get('/comment/:postId', async (req, res) => {
+    try {
+        const postId = req.params.postId;
 
+        // Find comments for the specified post
+        const comments = await Comment.find({ postId })
+            .populate('user', 'username profilePictureURL') // Populate the user information
+            .populate({
+                path: 'replies.user',
+                select: 'username profilePictureURL', // Populate user information in replies
+            })
+            .sort({ createdAt: 'asc' }); // Sort comments by creation time in ascending order
 
+        res.json(comments);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+  
+router.put('/:commentId/reply', async (req, res) => {
+    const comment_id = req.params?.commentId;
+    const username = req.session.user.username;
+    const user = await User.findOne({ username });
+    try {
+        if (comment_id){
+            //reply object
+            const reply = {
+                commentId: comment_id,
+                content : req.body.reply,
+                user:user,
+            }
+            const newComment = await Comments.findByIdAndUpdate({_id: comment_id},{$push:{replies: reply}},{new:true});
+            res.json(newComment);
+        }
+       
+    } catch (error) {
+        res.status(500).send('Internal Server Error');
+    }
+});
 
+router.post('/comment/:postId', async (req, res) => {
+    console.log('Received POST request to /comment/:postId');
+    try {
+        const postId = req.params.postId;
+        const { content } = req.body;
+        const user = req.session.user.username;
+        const profile = await Profile.findOne({username:user});
+        console.log(profile);
+        // Create a new comment
+        const newComment = new Comment({
+            content:content,
+            postId,
+            pprofile: profile._id,
+            date : new Date(),
+        });
+        console.log(newComment);
+
+        // Save the new comment to the database
+        const savedComment = await newComment.save();
+
+        res.status(201).json(savedComment);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
   
 
 
