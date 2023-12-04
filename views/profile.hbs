@@ -1,0 +1,54 @@
+<title>User Profile - GamersNook!</title>
+<link rel="icon" type="image/x-icon" href="/styles/images/fav2.png">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- CSS Files -->
+<link rel="stylesheet" href="/styles/general.css">
+<link rel="stylesheet" href="/styles/profile.css">
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<!-- Bootstrap JavaScript and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- JavaScript Files -->
+<script src="/javascript/script.js"></script>
+
+{{> navibar}}
+<main>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="{{profile.profilePictureURL}}" class="card-img-top" alt="User Avatar: {{profile.username}}">
+                        {{!-- <a href="/updateProfile" class="btn btn-primary" id="editProfileButton">Edit Picture</a> --}}
+                    </div>
+
+                    <div class="card-body">
+                        <h5 class="card-title"> {{profile.username}} </h5>
+                        <p class="card-text"> {{profile.email}} </p>
+                        <a href="/updateProfile" class="btn btn-primary" id="editProfileButton">Edit Profile</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-9">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Gaming Bio</h5>
+                        <p class="card-text">🎮 About Me 🎮</p>
+                        <p class="card-text">{{profile.bio}}</p>
+                        <br>
+                        {{!-- <a href="/updateProfile" class="btn btn-primary" id="editProfileButton">Edit Bio</a> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

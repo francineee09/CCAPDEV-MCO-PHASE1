@@ -27,6 +27,8 @@
          <div class="search-box" style="margin-right: 2%;">
             <input type="text" id="search" onkeyup="searching()"  placeholder="Search post by title" style="padding:5px;">
         </div>
+        <button id="filterLatestButton" class="btn btn-primary" onclick="filterByLatest()">Filter by Latest Date</button>
+        <button id="filterOldestButton" class="btn btn-primary" onclick="filterByOldest()">Filter by Oldest Date</button>
         {{#each reviewsData}}
         <div class="user-container">
             {{> reviewContent}}

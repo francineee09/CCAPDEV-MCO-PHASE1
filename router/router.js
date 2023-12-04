@@ -106,6 +106,30 @@ router.post('/signup', async (req, res) => {
     }
 });
 
+// Rendering reviews page with posts sorted by the latest date
+router.get('/reviews/latest', async (req, res) => {
+    try {
+        const reviewsData = await Post.find().sort({ createdAt: 'desc' }).populate({ path: 'author', model: 'Profile' }).exec();
+        res.render('reviews', { reviewsData, layout: 'main' });
+    } catch (error) {
+        console.error('Error fetching reviews:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+// Rendering reviews page with posts sorted by the oldest date
+router.get('/reviews/oldest', async (req, res) => {
+    try {
+        const reviewsData = await Post.find().sort({ createdAt: 'asc' }).populate({ path: 'author', model: 'Profile' }).exec();
+        res.render('reviews', { reviewsData, layout: 'main' });
+    } catch (error) {
+        console.error('Error fetching reviews:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
+
 //for rendering bio page of other users
 router.get('/user-profile/:username', async (req, res) => {
     try {
@@ -324,7 +348,71 @@ router.post('/comment/:postId', async (req, res) => {
     }
 });
   
+// Renders edit profile
+router.get('/updateProfile', async (req, res) => {
+    try {
+        const username = req.session.user.username;
+        const profile = await Profile.findOne({ username });
 
+        if (!profile) {
+            return res.status(404).send('Profile not found');
+        }
+
+        res.render('editProfile', { profile });
+    } catch (error) {
+        console.error('Error fetching profile for edit:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+// Renders profile
+router.get('/profile', async (req, res) => {
+    try {
+        if (!req.session.user) {
+            return res.redirect('/login');
+        }
+
+        const username = req.session.user.username;
+        const profile = await Profile.findOne({ username });
+
+        if (!profile) {
+            return res.status(404).send('Profile not found');
+        }
+
+        res.render('profile', { profile });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+// Handles profile update
+router.post('/updateProfile', upload.single('profilePicture'), async (req, res) => {
+    try {
+        const oldUsername = req.session.user.username;
+        const newUsername = req.body.username; 
+        
+        const profile = await Profile.findOne({ username: oldUsername });
+
+        if (!profile) {
+            return res.status(404).send('Profile not found');
+        }
+
+        profile.username = newUsername;
+        profile.bio = req.body.bio;
+
+        if (req.file) {
+            profile.profilePictureURL = req.file.path;
+        }
+
+        await profile.save();
+        req.session.user.username = newUsername;
+        res.redirect('/profile');
+    } catch (error) {
+        console.error('Error updating profile:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
   
 module.exports = router;

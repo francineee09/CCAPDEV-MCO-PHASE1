@@ -237,6 +237,7 @@ document.getElementById('postButton').addEventListener('click', function () {
     addNewPostToReviews();
 });
 
+
 // Additional script for enabling Bootstrap collapse
 $(document).ready(function() {
     $('[data-toggle="collapse"]').collapse();
@@ -765,4 +766,31 @@ document.addEventListener('DOMContentLoaded', function () {
     window.location.href = '/edit/' + postId;
   }
   
- 
+  document.addEventListener('DOMContentLoaded', function () {
+    const filterLatestButton = document.getElementById('filterLatestButton');
+    const filterOldestButton = document.getElementById('filterOldestButton');
+
+    if (filterLatestButton && filterOldestButton) {
+        filterLatestButton.addEventListener('click', function () {
+            filterByLatest();
+        });
+
+        filterOldestButton.addEventListener('click', function () {
+            filterByOldest();
+        });
+    } else {
+        console.error('Buttons not found. Make sure the button IDs match the script.');
+    }
+
+});
+
+
+function filterByLatest() {
+    console.log('Filtering by latest');
+    window.location.href = '/reviews/latest';
+}
+
+function filterByOldest() {
+    console.log('Filtering by oldest');
+    window.location.href = '/reviews/oldest';
+}
