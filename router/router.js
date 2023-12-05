@@ -425,7 +425,7 @@ router.post('/updateProfile', upload.single('profilePicture'), async (req, res) 
     }
 });
 
-app.get('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
     req.session.destroy(err => {
       if (err) {
         console.error('Error destroying session:', err);

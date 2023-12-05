@@ -75,8 +75,9 @@ if (!fs.existsSync(dir)){
 }
 
 // Start the server
-app.listen(process.env.SERVER_PORT, async function() {
-  console.log(`express app is now listening on port ${process.env.SERVER_PORT}`);
+let port = process.env.PORT || 3000
+app.listen(port, async function() {
+  console.log(`express app is now listening on port ${port}`);
   try {
       await connect();
       console.log(`Now connected to MongoDB`);
