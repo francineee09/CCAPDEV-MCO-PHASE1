@@ -27,17 +27,18 @@ const storage = multer.diskStorage({
   
   const upload = multer({ storage: storage });
 
-// *********************************8
+// *********************************
 
-//rendering index
+//Rendering index
 router.get('/', async function(req, res) {
    res.render('index');
 });
 
-//sign up
+// *********************************
+
+//Sign up
 router.post('/signup', async (req, res) => {
     try {
-      // Extract user details from request body
       const { username, email, password } = req.body;
       
       // Check if user already exists
@@ -46,7 +47,6 @@ router.post('/signup', async (req, res) => {
         return res.status(400).send({ error: 'Email already in use.' });
       }
       
-      // Create a new user with hashed password
       const hashedPassword = await bcrypt.hash(password, 10); // Salt rounds = 10
       user = new User({ username, email, password: hashedPassword });
       const userProfile = new Profile({ username, email });
@@ -60,8 +60,10 @@ router.post('/signup', async (req, res) => {
     }
   });
 
-  //log in
-  router.post('/login', async (req, res) => {
+// *********************************
+
+// Log in
+router.post('/login', async (req, res) => {
     const { username, email, password } = req.body;
     const user = await User.findOne({ email: email});
     console.log('User found:', user);
@@ -93,10 +95,12 @@ router.post('/signup', async (req, res) => {
         console.error('Error in login:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
-  });
+});
 
-  //for rendeing reviews page
-  router.get('/reviews', async (req, res) => {
+// *********************************
+
+//Rendeing reviews page
+router.get('/reviews', async (req, res) => {
     try {
         const reviewsData = await Post.find().populate({ path: 'author', model: 'Profile' }).exec();
         res.render('reviews', { reviewsData, layout: 'main' });
@@ -128,9 +132,9 @@ router.get('/reviews/oldest', async (req, res) => {
     }
 });
 
+// *********************************
 
-
-//for rendering bio page of other users
+//For rendering bio page of other users
 router.get('/user-profile/:username', async (req, res) => {
     try {
         console.log(req.session.user);
@@ -152,7 +156,9 @@ router.get('/user-profile/:username', async (req, res) => {
     }
 });
 
-//for rendering dashboard
+// *********************************
+
+//For rendering dashboard
 router.get('/dashboard', async (req, res) => {
     try {
         const user = req.session.user;
@@ -169,7 +175,9 @@ router.get('/dashboard', async (req, res) => {
     }
 });
 
-//for publishing new post
+// *********************************
+
+//For publishing new post
 router.post('/submit-post', upload.single('media'), async (req, res) => {
     console.log('Request Body:', req.body);
     console.log('Request File:', req.file);
@@ -194,10 +202,10 @@ router.post('/submit-post', upload.single('media'), async (req, res) => {
       }
       res.status(500).json({ message: 'Error in creating post', error: error.message });
   }
-  });
+});
 
-  //for getting the edit form to edit the post of logged-in user
-  router.get('/edit/:postId', async (req, res) => {
+//For getting the edit form to edit the post of logged-in user
+router.get('/edit/:postId', async (req, res) => {
     try {
         const postId = req.params.postId;
         const editedPost = await Post.findById(postId);
@@ -214,7 +222,7 @@ router.post('/submit-post', upload.single('media'), async (req, res) => {
     }
 });
 
-//for editing posts of user that is logged-in
+//For editing posts of user that is logged-in
 router.post('/update/:_id', upload.single('media'), async (req, res) => {
     console.log('Request Body:', req.body);
     console.log('Request File:', req.file);
@@ -241,7 +249,7 @@ router.post('/update/:_id', upload.single('media'), async (req, res) => {
     }
 });
 
-//for deleting posts in dashboard
+//For deleting posts in dashboard
 router.post('/delete/:postId', async (req, res) => {
     try {
         const postId = req.params.postId;
@@ -258,6 +266,8 @@ router.post('/delete/:postId', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+
+// *********************************
 
 //for comments
 // let commentsData = [];
@@ -347,6 +357,8 @@ router.post('/comment/:postId', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+
+// *********************************
   
 // Renders profile
 router.get('/profile', async (req, res) => {
