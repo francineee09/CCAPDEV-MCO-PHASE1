@@ -3,7 +3,7 @@ const User = require('../server/schema/User');
 const Comment = require('../server/schema/Comments');
 const Messages = require('../server/schema/Messages');
 const Post = require('../server/schema/Post');
-const Profile = require('../server/schema/profile');
+const Profile = require('../server/schema/Profile');
 const router = Router();
 const bcrypt = require('bcryptjs');
 const multer = require('multer');
@@ -348,23 +348,6 @@ router.post('/comment/:postId', async (req, res) => {
     }
 });
   
-// Renders edit profile
-router.get('/updateProfile', async (req, res) => {
-    try {
-        const username = req.session.user.username;
-        const profile = await Profile.findOne({ username });
-
-        if (!profile) {
-            return res.status(404).send('Profile not found');
-        }
-
-        res.render('editProfile', { profile });
-    } catch (error) {
-        console.error('Error fetching profile for edit:', error);
-        res.status(500).send('Internal Server Error');
-    }
-});
-
 // Renders profile
 router.get('/profile', async (req, res) => {
     try {
@@ -386,19 +369,36 @@ router.get('/profile', async (req, res) => {
     }
 });
 
-// Handles profile update
-router.post('/updateProfile', upload.single('profilePicture'), async (req, res) => {
+// Renders edit profile
+router.get('/updateProfile', async (req, res) => {
     try {
-        const oldUsername = req.session.user.username;
-        const newUsername = req.body.username; 
-        
-        const profile = await Profile.findOne({ username: oldUsername });
+        const username = req.session.user.username;
+        const profile = await Profile.findOne({ username });
 
         if (!profile) {
             return res.status(404).send('Profile not found');
         }
 
-        profile.username = newUsername;
+        res.render('editProfile', { profile });
+    } catch (error) {
+        console.error('Error fetching profile for edit:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+// Handles profile update
+router.post('/updateProfile', upload.single('profilePicture'), async (req, res) => {
+    try {
+        const username = req.session.user.username;
+        
+        const profile = await Profile.findOne({ username });
+
+        if (!profile) {
+            console.log('Profile not found');
+            return res.status(404).send('Profile not found');
+        }
+
+        console.log('Current Profile:', profile);
         profile.bio = req.body.bio;
 
         if (req.file) {
@@ -406,7 +406,7 @@ router.post('/updateProfile', upload.single('profilePicture'), async (req, res) 
         }
 
         await profile.save();
-        req.session.user.username = newUsername;
+
         res.redirect('/profile');
     } catch (error) {
         console.error('Error updating profile:', error);
@@ -414,7 +414,4 @@ router.post('/updateProfile', upload.single('profilePicture'), async (req, res) 
     }
 });
 
-  
 module.exports = router;
-
-

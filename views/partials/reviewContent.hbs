@@ -16,7 +16,7 @@
     <div class="post-title">
         <span class="title">{{title}}</span> 
     </div>
-    <span class="post-date">{{createdAt}}</span>
+    <span class="post-date">{{formatDate createdAt}}</span>
     <div class="post-pic">
         <img class="game-pic" onclick="redirectToUserProfile('{{author.username}}');" style="cursor: pointer;" src="{{mediaPath}}" alt="Post Image">
     </div>

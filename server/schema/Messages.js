@@ -1,8 +1,7 @@
-// models/Message.js
-
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const messageSchema = new mongoose.Schema({
+const messageSchema = new Schema({
   sender: String, // will later change this to reference a User model
   content: {
     type: String,
@@ -15,6 +14,4 @@ const messageSchema = new mongoose.Schema({
   }
 });
 
-const Message = mongoose.model('Message', messageSchema);
-
-module.exports = Message;
+module.exports = mongoose.model('Message', messageSchema);
