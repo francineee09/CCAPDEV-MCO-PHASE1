@@ -699,8 +699,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
 /*************************************************************/
+
 document.addEventListener('DOMContentLoaded', function () {
     fetchPosts();
 });
@@ -760,13 +760,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-  function editPost(postId) {
+function editPost(postId) {
     // Redirect to the editPost page with the postId parameter
     console.log('editPost called with postId:', postId);
     window.location.href = '/edit/' + postId;
-  }
+}
   
-  document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
     const filterLatestButton = document.getElementById('filterLatestButton');
     const filterOldestButton = document.getElementById('filterOldestButton');
 
@@ -781,9 +781,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         console.error('Buttons not found. Make sure the button IDs match the script.');
     }
-
 });
-
 
 function filterByLatest() {
     console.log('Filtering by latest');

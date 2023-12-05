@@ -25,10 +25,13 @@ async function main() {
           cookie: { maxAge: 1000 * 60 * 60 * 24 }, // Session cookie will expire after one day
       })
   );
+  
   app.use('/user-profile/styles', express.static('./styles', { type: 'text/css' }));
   app.use('/user-profile/javascript', express.static('./javascript', { type: 'application/javascript' }));
   app.use('/static', express.static('public'));
+  app.use('/uploads', express.static('uploads'));
   app.use(express.static(path.join(__dirname)));
+
   app.engine("hbs", exphbs.engine({
     extname: "hbs", 
     helpers: {
