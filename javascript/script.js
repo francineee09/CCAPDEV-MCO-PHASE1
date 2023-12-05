@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Send the user data to the server using a fetch request
         try {
-            const response = await fetch('http://localhost:3000/signup', {
+            const response = await fetch('/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         try {
-            const response = await fetch('http://localhost:3000/login', {
+            const response = await fetch('/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -313,7 +313,7 @@ function sendMessage() {
   
     console.log('Attempting to send message to server:', messageContent);
   
-    fetch('http://localhost:3000/messages', {
+    fetch('/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
