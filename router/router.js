@@ -10,7 +10,6 @@ const multer = require('multer');
 const path = require('path');
 const express = require('express');
 router.use(express.json());
-
 // this is for multer
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -425,5 +424,16 @@ router.post('/updateProfile', upload.single('profilePicture'), async (req, res) 
         res.status(500).send('Internal Server Error');
     }
 });
+
+app.get('/logout', (req, res) => {
+    req.session.destroy(err => {
+      if (err) {
+        console.error('Error destroying session:', err);
+        res.status(500).send('Internal Server Error');
+      } else {
+        res.send('Logged out successfully!');
+      }
+    });
+  });
 
 module.exports = router;

@@ -209,14 +209,14 @@ function submitPost(event) {
         cardBody.appendChild(mediaElement);
     }
 
-    // For creation of delete button
-    const deleteButton = document.createElement("button");
-    deleteButton.classList.add("btn", "btn-danger", "mt-2");
-    deleteButton.textContent = "Delete";
-    deleteButton.addEventListener("click", () => {
-        postCard.remove();
-    });
-    cardBody.appendChild(deleteButton);
+    // // For creation of delete button
+    // const deleteButton = document.createElement("button");
+    // deleteButton.classList.add("btn", "btn-danger", "mt-2");
+    // deleteButton.textContent = "Delete";
+    // deleteButton.addEventListener("click", () => {
+    //     postCard.remove();
+    // });
+    // cardBody.appendChild(deleteButton);
 
     // Container for existing posts
     const postContainer = document.querySelector(".col-md-8");
@@ -227,6 +227,7 @@ function submitPost(event) {
 
     // Clear the post form
     document.getElementById("postForm").reset();
+    
 }
 
 // Event listener for post submission
@@ -235,6 +236,7 @@ postForm.addEventListener("submit", submitPost);
 //Event listener for post button click
 document.getElementById('postButton').addEventListener('click', function () {
     addNewPostToReviews();
+    window.location.href = '/dashboard';
 });
 
 
@@ -271,17 +273,14 @@ function addNewPostToReviews() {
 
     var postTitleElement = document.createElement('div');
     postTitleElement.className = 'post-title';
-    //postTitleElement.innerHTML = '<span class="title" onclick="navigateToUserProfile(\'' + userProfilePic + '\', \'' + username + '\')">' + postTitle + '</span>';
-    newPost.appendChild(postTitleElement);
-
-    var postTitleElement = document.createElement('div');
-    postTitleElement.className = 'post-title';
     postTitleElement.innerHTML = '<span class="title">' + postTitle + '</span>';
     newPost.appendChild(postTitleElement);
 
     var postContentElement = document.createElement('div');
     postContentElement.className = 'post-content';
-    postContentElement.innerHTML = '<p>' + postContent + '</p>';
+    var contentPreview = postContent.substring(0, 20); 
+    postContentElement.innerHTML = '<p>' + contentPreview + '<span class="dots">...</span><span class="more">' + postContent + '</span></p>';
+
     newPost.appendChild(postContentElement);
 
     // Append the new post to the reviews container
@@ -293,6 +292,7 @@ function redirectToUserProfile(username) {
     // Redirect logic here, for example:
     window.location.href = '/user-profile/' + username;
 }
+
 
 
 
@@ -601,21 +601,48 @@ displayLibrary();
 /*************************************************************/
 
 // Function for read more
-function myFunction(game) {
-    let dots = document.querySelector(`.post-info-container[data-game="${game}"] .dots`);
-    let moreText = document.querySelector(`.post-info-container[data-game="${game}"] .more`);
-    let btnText = document.querySelector(`.post-info-container[data-game="${game}"] .myBtn`);
+// function myFunction(game) {
+//     let dots = document.querySelector(`.post-info-container[data-game="${game}"] .dots`);
+//     let moreText = document.querySelector(`.post-info-container[data-game="${game}"] .more`);
+//     let btnText = document.querySelector(`.post-info-container[data-game="${game}"] .myBtn`);
   
-    if (dots.style.display === "none") {
-      dots.style.display = "inline";
-      btnText.innerHTML = "Read more"; 
-      moreText.style.display = "none";
-    } else {
-      dots.style.display = "none";
-      btnText.innerHTML = "Read less"; 
-      moreText.style.display = "inline";
-    }
-}
+//     if (dots.style.display === "none") {
+//       dots.style.display = "inline";
+//       btnText.innerHTML = "Read more"; 
+//       moreText.style.display = "none";
+//     } else {
+//       dots.style.display = "none";
+//       btnText.innerHTML = "Read less"; 
+//       moreText.style.display = "inline";
+//     }
+// }
+
+    // function read(game) {
+    //     let postContainer = document.querySelector(`.post-info-container[data-game="${game}"]`);
+    //     let dots = postContainer.querySelector('.dots');
+    //     let moreText = postContainer.querySelector('.more');
+    //     let btnText = postContainer.querySelector('.myBtn');
+    //     let content = postContainer.querySelector('.post-content p');
+    
+    //     if (dots.style.display === "none") {
+    //         // If dots are hidden, show only first 30 characters
+    //         dots.style.display = "inline";
+    //         btnText.innerHTML = "Read more"; 
+    //         moreText.style.display = "none";
+    //         content.innerHTML = content.innerHTML.substring(0, 30) + '...';
+    //     } else {
+    //         // If dots are visible, show the entire content
+    //         dots.style.display = "none";
+    //         btnText.innerHTML = "Read less"; 
+    //         moreText.style.display = "inline";
+    //         content.innerHTML = '{{content}}'; // Restore the original content
+    //     }
+    // }
+
+
+
+
+
 
 /*************************************************************/
 
@@ -792,3 +819,25 @@ function filterByOldest() {
     console.log('Filtering by oldest');
     window.location.href = '/reviews/oldest';
 }
+
+function readMore(game) {
+    let postContainer = document.querySelector(`.post-info-container[data-game="${game}"]`);
+    let previewContent = postContainer.querySelector('.preview');
+    let fullContent = postContainer.querySelector('.full-content');
+    let dots = postContainer.querySelector('.dots');
+    let btnText = postContainer.querySelector('.myBtn');
+    console.log(previewContent);
+    if (dots.style.display === 'none') {
+        dots.style.display = 'inline';
+        btnText.innerHTML = 'Read more';
+        fullContent.style.display = 'none';
+        previewContent.style.display = 'inline';
+    } else {
+        dots.style.display = 'none';
+        btnText.innerHTML = 'Read less';
+        fullContent.style.display = 'inline';
+        previewContent.style.display = 'none';
+    }
+}
+
+

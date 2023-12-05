@@ -25,10 +25,31 @@
                         <a class="nav-link" href="#startNewChat"><i class="fas fa-envelope"></i> Messages</a>
                     </li> -->
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+                        <a class="nav-link" href="/login.html" onclick="logout()"><i class="fas fa-sign-out-alt"></i > Log Out</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 </header>
+<script>
+    function logout() {
+      // Perform any client-side cleanup (optional)
+      console.log('Performing client-side cleanup...');
+
+      // Redirect to the logout endpoint on the server
+      fetch('/logout', { method: 'GET' })
+        .then(response => {
+          if (response.ok) {
+            console.log('Logged out successfully!');
+            // Redirect to the main login page
+            window.location.href = '/login';
+          } else {
+            console.error('Logout failed:', response.statusText);
+          }
+        })
+        .catch(error => console.error('Logout error:', error));
+    }
+  </script>
+</body>
+</html>

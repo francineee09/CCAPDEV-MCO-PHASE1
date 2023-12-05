@@ -2,10 +2,10 @@
 const mongoose = require('mongoose');
 const Post = require('./server/schema/Post');
 const Message = require('./server/schema/Messages');
-const Profile = require('./server/schema/profile'); 
+const Profile = require('./server/schema/Profile'); 
 
 // MongoDB connection string
-const dbURL = 'mongodb+srv://blabdue:iawynikd@blabdue.m4zqcqu.mongodb.net/MCO3'; 
+const dbURL = 'mongodb+srv://blabdue:iawynikd@blabdue.m4zqcqu.mongodb.net/MCO_3'; 
 
 mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(async () => { // Added async here
