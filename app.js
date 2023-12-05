@@ -20,7 +20,7 @@ async function main() {
           resave: false,
           saveUninitialized: true,
           store: MongoStore.create({ 
-              mongoUrl: 'mongodb+srv://blabdue:iawynikd@blabdue.m4zqcqu.mongodb.net/test2',
+              mongoUrl: 'mongodb+srv://franceeee09:_apdev2223@fairyfloss.lucgr7f.mongodb.net/?retryWrites=true&w=majority',
           }),
           cookie: { maxAge: 1000 * 60 * 60 * 24 }, // Session cookie will expire after one day
       })
